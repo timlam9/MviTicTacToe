@@ -25,14 +25,24 @@ class TicTacToeTest {
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun clickingASpotAddsAnXMark() {
+    fun clicking_a_spot_adds_an_X_mark() {
         onTopLeftSpotClicked()
         topLeftSpotIsMarkedX()
+    }
+
+    @Test
+    fun clicking_a_marked_spot_shows_already_clicked_message() {
+        onTopLeftSpotClicked()
+        onTopLeftSpotClicked()
+        showAlreadyClickedMessage()
     }
 
     private fun onTopLeftSpotClicked() = onView(withId(R.id.topLeftSpot)).perform(click())
 
     private fun topLeftSpotIsMarkedX() = onView(withId(R.id.topLeftSpot)).check(matches(withText("X")))
+
+    private fun showAlreadyClickedMessage() = onView(withId(com.google.android.material.R.id.snackbar_text))
+        .check(matches(withText(R.string.message_spot_already_marked)))
 
 
 }
