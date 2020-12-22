@@ -1,7 +1,3 @@
 package com.timlam.tictactoe
 
-enum class Spot {
-
-     TOP_LEFT
-
-}
+data class Spot(val position: Position, val mark: String)

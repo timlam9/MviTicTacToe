@@ -37,12 +37,23 @@ class TicTacToeTest {
         showAlreadyClickedMessage()
     }
 
+    @Test
+    fun player_2_clicking_a_spot_adds_an_O_mark() {
+        onTopLeftSpotClicked()
+        onTopCenterSpotClicked()
+        topCenterSpotIsMarkedO()
+    }
+
     private fun onTopLeftSpotClicked() = onView(withId(R.id.topLeftSpot)).perform(click())
 
     private fun topLeftSpotIsMarkedX() = onView(withId(R.id.topLeftSpot)).check(matches(withText("X")))
 
     private fun showAlreadyClickedMessage() = onView(withId(com.google.android.material.R.id.snackbar_text))
         .check(matches(withText(R.string.message_spot_already_marked)))
+
+    private fun onTopCenterSpotClicked() = onView(withId(R.id.topCenterSpot)).perform(click())
+
+    private fun topCenterSpotIsMarkedO() = onView(withId(R.id.topCenterSpot)).check(matches(withText("O")))
 
 
 }

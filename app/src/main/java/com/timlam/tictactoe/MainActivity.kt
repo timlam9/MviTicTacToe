@@ -1,16 +1,13 @@
 package com.timlam.tictactoe
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.timlam.tictactoe.databinding.ActivityMainBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
@@ -38,7 +35,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(state: TicTacToeState) {
-        binding.topLeftSpot.text = state.topLeftSpot
+        binding.topLeftSpot.text = state.board.spots.first { it.position == Position.TOP_LEFT }.mark
+        binding.topCenterSpot.text = state.board.spots.first { it.position == Position.TOP_CENTER }.mark
     }
 
     private fun handleEffects() = viewModel.effects.onEach { resolve(it) }.launchIn(lifecycleScope)
@@ -58,6 +56,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mergeFlows(): Flow<Event> =
-        merge<Event>(binding.topLeftSpot.clicks().map { Event.OnSpotClicked(Spot.TOP_LEFT) })
+        merge<Event>(
+            binding.topLeftSpot.clicks().map { Event.OnSpotClicked(Position.TOP_LEFT) },
+            binding.topCenterSpot.clicks().map { Event.OnSpotClicked(Position.TOP_CENTER) }
+        )
 
 }

@@ -2,10 +2,8 @@ package com.timlam.tictactoe
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
@@ -36,21 +34,34 @@ class TicTacToeViewModelTest {
         val states = mutableListOf<TicTacToeState>()
         val job = viewModel.state.onEach { states.add(it) }.launchIn(this)
 
-        viewModel.onEvent(Event.OnSpotClicked(Spot.TOP_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
 
-        assertEquals(TicTacToeState("X"), states.last())
+        assertEquals(Spot(Position.TOP_LEFT, "X"), states.last().board.spots.first { it.position == Position.TOP_LEFT })
         job.cancel()
     }
 
     @Test
     fun `given a spot is already marked, when a spot is clicked, then show already marked message`() = runBlockingTest {
         val effects = mutableListOf<Effect>()
-        viewModel.onEvent(Event.OnSpotClicked(Spot.TOP_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
         val job = viewModel.effects.onEach { effects.add(it) }.launchIn(this)
 
-        viewModel.onEvent(Event.OnSpotClicked(Spot.TOP_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
 
         assertEquals(Effect.ShowAlreadyMarkedMessage, effects.first())
+        job.cancel()
+    }
+
+    @Test
+    fun `given player 2 is playing, when a spot is clicked, then mark it as O`() = runBlockingTest {
+        val states = mutableListOf<TicTacToeState>()
+        val job = viewModel.state.onEach { states.add(it) }.launchIn(this)
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
+
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_CENTER))
+
+        assertEquals(Spot(Position.TOP_LEFT, "X"), states.last().board.spots.first { it.position == Position.TOP_LEFT })
+        assertEquals(Spot(Position.TOP_CENTER, "O"), states.last().board.spots.first { it.position == Position.TOP_CENTER })
         job.cancel()
     }
 

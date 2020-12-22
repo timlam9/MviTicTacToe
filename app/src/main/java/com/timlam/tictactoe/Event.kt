@@ -2,6 +2,6 @@ package com.timlam.tictactoe
 
 sealed class Event {
 
-    data class OnSpotClicked(val spot: Spot): Event()
+    data class OnSpotClicked(val position: Position) : Event()
 
 }

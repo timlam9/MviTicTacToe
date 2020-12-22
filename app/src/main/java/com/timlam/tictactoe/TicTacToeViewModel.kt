@@ -26,13 +26,16 @@ class TicTacToeViewModel : ViewModel() {
 
     private suspend fun reduce(currentState: TicTacToeState, event: Event): TicTacToeState {
         return when (event) {
-            is Event.OnSpotClicked -> handleSpotClicked(currentState, event.spot)
+            is Event.OnSpotClicked -> handleSpotClicked(currentState, event.position)
         }
     }
 
-    private suspend fun handleSpotClicked(currentState: TicTacToeState, spot: Spot): TicTacToeState {
-        return if (spot == Spot.TOP_LEFT && currentState.topLeftSpot.isEmpty()) {
-            currentState.copy(topLeftSpot = "X")
+    private suspend fun handleSpotClicked(currentState: TicTacToeState, position: Position): TicTacToeState {
+        return if (currentState.board.isSpotAvailable(position)) {
+            currentState.copy(
+                board = currentState.board.markSpot(position, currentState.player.name),
+                player = currentState.nextPlayer()
+            )
         } else {
             _effects.emit(Effect.ShowAlreadyMarkedMessage)
             currentState
