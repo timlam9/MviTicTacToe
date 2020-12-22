@@ -35,8 +35,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(state: TicTacToeState) {
-        binding.topLeftSpot.text = state.board.markOfSpot(Position.TOP_LEFT)
-        binding.topCenterSpot.text = state.board.markOfSpot(Position.TOP_CENTER)
+        with(state.board) {
+            binding.topLeftSpot.text = markOfSpot(Position.TOP_LEFT)
+            binding.topCenterSpot.text = markOfSpot(Position.TOP_CENTER)
+            binding.topRightSpot.text = markOfSpot(Position.TOP_RIGHT)
+            binding.midLeftSpot.text = markOfSpot(Position.MID_LEFT)
+            binding.midCenterSpot.text = markOfSpot(Position.MID_CENTER)
+            binding.midRightSpot.text = markOfSpot(Position.MID_RIGHT)
+            binding.bottomLeftSpot.text = markOfSpot(Position.BOTTOM_LEFT)
+            binding.bottomCenterSpot.text = markOfSpot(Position.BOTTOM_CENTER)
+            binding.bottomRightSpot.text = markOfSpot(Position.BOTTOM_RIGHT)
+        }
     }
 
     private fun handleEffects() = viewModel.effects.onEach { resolve(it) }.launchIn(lifecycleScope)
@@ -58,7 +67,14 @@ class MainActivity : AppCompatActivity() {
     private fun mergeFlows(): Flow<Event> =
         merge<Event>(
             binding.topLeftSpot.clicks().map { Event.OnSpotClicked(Position.TOP_LEFT) },
-            binding.topCenterSpot.clicks().map { Event.OnSpotClicked(Position.TOP_CENTER) }
+            binding.topCenterSpot.clicks().map { Event.OnSpotClicked(Position.TOP_CENTER) },
+            binding.topRightSpot.clicks().map { Event.OnSpotClicked(Position.TOP_RIGHT) },
+            binding.midLeftSpot.clicks().map { Event.OnSpotClicked(Position.MID_LEFT) },
+            binding.midCenterSpot.clicks().map { Event.OnSpotClicked(Position.MID_CENTER) },
+            binding.midRightSpot.clicks().map { Event.OnSpotClicked(Position.MID_RIGHT) },
+            binding.bottomLeftSpot.clicks().map { Event.OnSpotClicked(Position.BOTTOM_LEFT) },
+            binding.bottomCenterSpot.clicks().map { Event.OnSpotClicked(Position.BOTTOM_CENTER) },
+            binding.bottomRightSpot.clicks().map { Event.OnSpotClicked(Position.BOTTOM_RIGHT) }
         )
 
 }
