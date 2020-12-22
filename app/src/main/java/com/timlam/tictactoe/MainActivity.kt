@@ -28,9 +28,6 @@ class MainActivity : AppCompatActivity() {
         eventsListener(mergeFlows())
         renderStates()
 
-        val lambda: suspend (Unit) -> Event.OnSpotClicked = { Event.OnSpotClicked(Spot.TOP_LEFT) }
-        val x = binding.topLeftSpot.clicks().map(lambda)
-
     }
 
     private fun initBinding() {
