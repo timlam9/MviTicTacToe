@@ -1,5 +1,6 @@
 package com.timlam.tictactoe
 
+import androidx.annotation.IdRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -25,35 +26,30 @@ class TicTacToeTest {
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun clicking_a_spot_adds_an_X_mark() {
-        onTopLeftSpotClicked()
-        topLeftSpotIsMarkedX()
+    fun when_player_1_clicks_an_unmarked_spot_mark_it_as_X() {
+        onSpotClicked(R.id.topLeftSpot)
+        checkSpotForMark(R.id.topLeftSpot, Player.X.name)
     }
 
     @Test
-    fun clicking_a_marked_spot_shows_already_clicked_message() {
-        onTopLeftSpotClicked()
-        onTopLeftSpotClicked()
-        showAlreadyClickedMessage()
+    fun when_either_player_clicks_a_marked_spot_show_already_marked_message() {
+        onSpotClicked(R.id.topLeftSpot)
+        onSpotClicked(R.id.topLeftSpot)
+        showAlreadyMarkedMessage()
     }
 
     @Test
-    fun player_2_clicking_a_spot_adds_an_O_mark() {
-        onTopLeftSpotClicked()
-        onTopCenterSpotClicked()
-        topCenterSpotIsMarkedO()
+    fun when_player_2_clicks_an_unmarked_spot_mark_it_as_O() {
+        onSpotClicked(R.id.topLeftSpot)
+        onSpotClicked(R.id.topCenterSpot)
+        checkSpotForMark(R.id.topCenterSpot, Player.O.name)
     }
 
-    private fun onTopLeftSpotClicked() = onView(withId(R.id.topLeftSpot)).perform(click())
+    private fun onSpotClicked(@IdRes spotId: Int) = onView(withId(spotId)).perform(click())
 
-    private fun topLeftSpotIsMarkedX() = onView(withId(R.id.topLeftSpot)).check(matches(withText("X")))
+    private fun checkSpotForMark(@IdRes spotId: Int, mark: String) = onView(withId(spotId)).check(matches(withText(mark)))
 
-    private fun showAlreadyClickedMessage() = onView(withId(com.google.android.material.R.id.snackbar_text))
+    private fun showAlreadyMarkedMessage() = onView(withId(com.google.android.material.R.id.snackbar_text))
         .check(matches(withText(R.string.message_spot_already_marked)))
-
-    private fun onTopCenterSpotClicked() = onView(withId(R.id.topCenterSpot)).perform(click())
-
-    private fun topCenterSpotIsMarkedO() = onView(withId(R.id.topCenterSpot)).check(matches(withText("O")))
-
 
 }
