@@ -30,13 +30,13 @@ class TicTacToeViewModelTest {
     }
 
     @Test
-    fun `when a spot is clicked, then mark it as X`() = runBlockingTest {
+    fun `given player 1 is playing, when a spot is clicked, then mark it as X`() = runBlockingTest {
         val states = mutableListOf<TicTacToeState>()
         val job = viewModel.state.onEach { states.add(it) }.launchIn(this)
 
         viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
 
-        assertEquals(Spot(Position.TOP_LEFT, "X"), states.last().board.spots.first { it.position == Position.TOP_LEFT })
+        assertEquals(expectedSpot(Position.TOP_LEFT, Player.X), actualSpotInBoard(states.last(), Position.TOP_LEFT))
         job.cancel()
     }
 
@@ -60,9 +60,14 @@ class TicTacToeViewModelTest {
 
         viewModel.onEvent(Event.OnSpotClicked(Position.TOP_CENTER))
 
-        assertEquals(Spot(Position.TOP_LEFT, "X"), states.last().board.spots.first { it.position == Position.TOP_LEFT })
-        assertEquals(Spot(Position.TOP_CENTER, "O"), states.last().board.spots.first { it.position == Position.TOP_CENTER })
+        assertEquals(expectedSpot(Position.TOP_LEFT, Player.X), actualSpotInBoard(states.last(), Position.TOP_LEFT))
+        assertEquals(expectedSpot(Position.TOP_CENTER, Player.O), actualSpotInBoard(states.last(), Position.TOP_CENTER))
         job.cancel()
     }
+
+    private fun expectedSpot(position: Position, player: Player): Spot = Spot(position, player.name)
+
+    private fun actualSpotInBoard(state: TicTacToeState, position: Position): Spot =
+        state.board.spots.first { it.position == position }
 
 }
