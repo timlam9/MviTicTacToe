@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(state: TicTacToeState) {
-        binding.topLeftSpot.text = state.board.spots.first { it.position == Position.TOP_LEFT }.mark
-        binding.topCenterSpot.text = state.board.spots.first { it.position == Position.TOP_CENTER }.mark
+        binding.topLeftSpot.text = state.board.markOfSpot(Position.TOP_LEFT)
+        binding.topCenterSpot.text = state.board.markOfSpot(Position.TOP_CENTER)
     }
 
     private fun handleEffects() = viewModel.effects.onEach { resolve(it) }.launchIn(lifecycleScope)

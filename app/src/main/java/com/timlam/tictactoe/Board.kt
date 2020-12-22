@@ -11,6 +11,8 @@ data class Board(val spots: List<Spot> = generateBoard()) {
         return Board(newSpots)
     }
 
+    fun markOfSpot(position: Position): String = spots.first { it.position == position }.mark
+
 }
 
 private fun generateBoard(): List<Spot> {
