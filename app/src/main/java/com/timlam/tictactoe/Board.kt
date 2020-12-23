@@ -56,14 +56,8 @@ data class Board(val spots: List<Spot> = generateBoard()) {
 
     fun markOfSpot(position: Position): String = spots.first { it.position == position }.mark
 
-    fun isWon(): Boolean =
-        winningCombinations.contains(spots.filter { it.mark == Player.X.name }.map { it.position }.toSet())
-
-    fun isPlayerWon(): Player? = when {
-        winningCombinations.contains(spots.filter { it.mark == Player.X.name }.map { it.position }.toSet()) -> Player.X
-        winningCombinations.contains(spots.filter { it.mark == Player.X.name }.map { it.position }.toSet()) -> Player.O
-        else -> null
-    }
+    fun isWon(player: Player): Boolean =
+        winningCombinations.contains(spots.filter { it.mark == player.name }.map { it.position }.toSet())
 
 }
 

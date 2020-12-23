@@ -60,6 +60,19 @@ class TicTacToeTest {
         showPlayerWinsMessage(Player.X)
     }
 
+    @Test
+    fun when_player_2_wins() {
+        onSpotClicked(R.id.midLeftSpot)
+        onSpotClicked(R.id.topLeftSpot)
+        onSpotClicked(R.id.topCenterSpot)
+        onSpotClicked(R.id.midCenterSpot)
+        onSpotClicked(R.id.bottomLeftSpot)
+        onSpotClicked(R.id.bottomRightSpot)
+
+        showPlayerWinsMessage(Player.O)
+    }
+
+
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private val playerWinsMessage = context.getString(R.string.message_player_wins)
 
