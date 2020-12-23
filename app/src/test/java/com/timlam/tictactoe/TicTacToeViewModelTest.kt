@@ -1,5 +1,8 @@
 package com.timlam.tictactoe
 
+import com.timlam.domain.models.Position
+import com.timlam.domain.models.Player
+import com.timlam.domain.models.Spot
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
@@ -36,7 +39,10 @@ class TicTacToeViewModelTest {
 
         viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
 
-        assertEquals(expectedSpot(Position.TOP_LEFT, Player.X), actualSpotInBoard(states.last(), Position.TOP_LEFT))
+        assertEquals(
+            expectedSpot(Position.TOP_LEFT, Player.X),
+            actualSpotInBoard(states.last(), Position.TOP_LEFT)
+        )
         job.cancel()
     }
 
@@ -60,8 +66,14 @@ class TicTacToeViewModelTest {
 
         viewModel.onEvent(Event.OnSpotClicked(Position.TOP_CENTER))
 
-        assertEquals(expectedSpot(Position.TOP_LEFT, Player.X), actualSpotInBoard(states.last(), Position.TOP_LEFT))
-        assertEquals(expectedSpot(Position.TOP_CENTER, Player.O), actualSpotInBoard(states.last(), Position.TOP_CENTER))
+        assertEquals(
+            expectedSpot(Position.TOP_LEFT, Player.X),
+            actualSpotInBoard(states.last(), Position.TOP_LEFT)
+        )
+        assertEquals(
+            expectedSpot(Position.TOP_CENTER, Player.O),
+            actualSpotInBoard(states.last(), Position.TOP_CENTER)
+        )
         job.cancel()
     }
 
@@ -115,7 +127,8 @@ class TicTacToeViewModelTest {
         job.cancel()
     }
 
-    private fun expectedSpot(position: Position, player: Player): Spot = Spot(position, player.name)
+    private fun expectedSpot(position: Position, player: Player): Spot =
+        Spot(position, player.name)
 
     private fun actualSpotInBoard(state: TicTacToeState, position: Position): Spot =
         state.board.spots.first { it.position == position }

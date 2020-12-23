@@ -2,13 +2,17 @@ package com.timlam.tictactoe
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.timlam.domain.Board
+import com.timlam.domain.GameEngine
+import com.timlam.domain.models.GameStatus
+import com.timlam.domain.models.Position
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class TicTacToeViewModel : ViewModel() {
+class TicTacToeViewModel(private val gameEngine: GameEngine = GameEngine()) : ViewModel() {
 
     private val _state = MutableStateFlow(TicTacToeState())
     val state = _state.asStateFlow()
@@ -33,24 +37,29 @@ class TicTacToeViewModel : ViewModel() {
     private suspend fun handleSpotClicked(currentState: TicTacToeState, position: Position): TicTacToeState {
         return if (currentState.board.isSpotAvailable(position)) {
             val board = currentState.board.markSpot(position, currentState.player.name)
-            val gameStatus = if (board.isWon(currentState.player)) {
-                _effects.emit(Effect.ShowPlayerWinsMessage(player = currentState.player))
-                GameStatus.GameOver.PlayerWon(currentState.player)
-            } else if (board.isGameTie()) {
-                _effects.emit(Effect.ShowTieMessage)
-                GameStatus.GameOver.Tie
-            } else
-                GameStatus.Playing
-
-            currentState.copy(
-                board = board,
-                player = currentState.nextPlayer(),
-                gameStatus = gameStatus
-            )
+            val gameStatus = gameEngine.updateStatus(board, currentState.player).also {
+                when (it) {
+                    is GameStatus.GameOver.PlayerWon -> _effects.emit(Effect.ShowPlayerWinsMessage(player = currentState.player))
+                    is GameStatus.GameOver.Tie -> _effects.emit(Effect.ShowTieMessage)
+                    else -> {
+                    } // Continue playing without any effects
+                }
+            }
+            updateState(currentState, board, gameStatus)
         } else {
             _effects.emit(Effect.ShowAlreadyMarkedMessage)
             currentState
         }
     }
+
+    private fun updateState(
+        currentState: TicTacToeState,
+        board: Board,
+        gameStatus: GameStatus
+    ) = currentState.copy(
+        board = board,
+        player = currentState.nextPlayer(),
+        gameStatus = gameStatus
+    )
 
 }

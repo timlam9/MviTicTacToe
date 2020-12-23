@@ -1,4 +1,8 @@
-package com.timlam.tictactoe
+package com.timlam.domain
+
+import com.timlam.domain.models.Player
+import com.timlam.domain.models.Position
+import com.timlam.domain.models.Spot
 
 data class Board(val spots: List<Spot> = generateBoard()) {
 

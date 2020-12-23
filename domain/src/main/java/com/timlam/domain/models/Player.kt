@@ -1,4 +1,4 @@
-package com.timlam.tictactoe
+package com.timlam.domain.models
 
 enum class Player {
 
