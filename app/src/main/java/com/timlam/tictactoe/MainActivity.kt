@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         when (effect) {
             is Effect.ShowAlreadyMarkedMessage -> showSnackbar(getString(R.string.message_spot_already_marked))
             is Effect.ShowPlayerWinsMessage -> showSnackbar(effect.player.name + " " + getString(R.string.message_player_wins))
+            is Effect.ShowTieMessage -> showSnackbar(getString(R.string.message_tie))
         }
     }
 

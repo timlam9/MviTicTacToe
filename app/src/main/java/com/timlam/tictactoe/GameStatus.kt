@@ -8,6 +8,8 @@ sealed class GameStatus {
 
         data class PlayerWon(val player: Player) : GameOver()
 
+        object Tie : GameOver()
+
     }
 
 }

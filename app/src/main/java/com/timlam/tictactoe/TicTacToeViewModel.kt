@@ -36,6 +36,9 @@ class TicTacToeViewModel : ViewModel() {
             val gameStatus = if (board.isWon(currentState.player)) {
                 _effects.emit(Effect.ShowPlayerWinsMessage(player = currentState.player))
                 GameStatus.GameOver.PlayerWon(currentState.player)
+            } else if (board.isGameTie()) {
+                _effects.emit(Effect.ShowTieMessage)
+                GameStatus.GameOver.Tie
             } else
                 GameStatus.Playing
 

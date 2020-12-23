@@ -59,6 +59,9 @@ data class Board(val spots: List<Spot> = generateBoard()) {
     fun isWon(player: Player): Boolean =
         winningCombinations.contains(spots.filter { it.mark == player.name }.map { it.position }.toSet())
 
+    fun isGameTie(): Boolean = spots.all { it.mark.isNotEmpty() }
+
+
 }
 
 private fun generateBoard(): List<Spot> {

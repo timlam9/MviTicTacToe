@@ -73,12 +73,31 @@ class TicTacToeTest {
     }
 
 
+    @Test
+    fun when_players_ties() {
+        onSpotClicked(R.id.topLeftSpot)
+        onSpotClicked(R.id.midLeftSpot)
+        onSpotClicked(R.id.topCenterSpot)
+        onSpotClicked(R.id.midCenterSpot)
+        onSpotClicked(R.id.midRightSpot)
+        onSpotClicked(R.id.topRightSpot)
+        onSpotClicked(R.id.bottomLeftSpot)
+        onSpotClicked(R.id.bottomCenterSpot)
+        onSpotClicked(R.id.bottomRightSpot)
+
+        showTieMessage()
+    }
+
+
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private val playerWinsMessage = context.getString(R.string.message_player_wins)
 
     private fun showPlayerWinsMessage(player: Player) = onView(
         withId(com.google.android.material.R.id.snackbar_text)
     ).check(matches(withText(player.name + " " + playerWinsMessage)))
+
+    private fun showTieMessage() =
+        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.message_tie)))
 
     private fun onSpotClicked(@IdRes spotId: Int) = onView(withId(spotId)).perform(click())
 

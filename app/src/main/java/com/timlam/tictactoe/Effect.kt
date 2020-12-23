@@ -6,4 +6,6 @@ sealed class Effect {
 
     object ShowAlreadyMarkedMessage : Effect()
 
+    object ShowTieMessage : Effect()
+
 }
