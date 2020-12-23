@@ -12,9 +12,12 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class TicTacToeViewModel(private val gameEngine: GameEngine = GameEngine()) : ViewModel() {
+class TicTacToeViewModel(
+    private val gameEngine: GameEngine = GameEngine(),
+    private val board: Board = Board()
+) : ViewModel() {
 
-    private val _state = MutableStateFlow(TicTacToeState())
+    private val _state = MutableStateFlow(TicTacToeState(board.spots))
     val state = _state.asStateFlow()
 
     private val _effects = MutableSharedFlow<Effect>(0)
@@ -35,18 +38,19 @@ class TicTacToeViewModel(private val gameEngine: GameEngine = GameEngine()) : Vi
     }
 
     private suspend fun handleSpotClicked(currentState: TicTacToeState, position: Position): TicTacToeState {
-        return if (currentState.board.isSpotAvailable(position)) {
-            val board = currentState.board.markSpot(position, currentState.player.name)
+        return try {
+            board.captureSpot(position, currentState.player)
             val gameStatus = gameEngine.updateStatus(board, currentState.player).also {
                 when (it) {
                     is GameStatus.GameOver.PlayerWon -> _effects.emit(Effect.ShowPlayerWinsMessage(player = currentState.player))
                     is GameStatus.GameOver.Tie -> _effects.emit(Effect.ShowTieMessage)
                     else -> {
-                    } // Continue playing without any effects
+                        // Continue playing without any effects
+                    }
                 }
             }
             updateState(currentState, board, gameStatus)
-        } else {
+        } catch (e: Board.SpotAlreadyMarkedException) {
             _effects.emit(Effect.ShowAlreadyMarkedMessage)
             currentState
         }
@@ -57,7 +61,7 @@ class TicTacToeViewModel(private val gameEngine: GameEngine = GameEngine()) : Vi
         board: Board,
         gameStatus: GameStatus
     ) = currentState.copy(
-        board = board,
+        spots = board.spots,
         player = currentState.nextPlayer(),
         gameStatus = gameStatus
     )

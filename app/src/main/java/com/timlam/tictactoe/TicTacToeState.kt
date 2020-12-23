@@ -1,11 +1,11 @@
 package com.timlam.tictactoe
 
-import com.timlam.domain.Board
 import com.timlam.domain.models.GameStatus
 import com.timlam.domain.models.Player
+import com.timlam.domain.models.Spot
 
 data class TicTacToeState(
-    val board: Board = Board(),
+    val spots: List<Spot>,
     val player: Player = Player.X,
     val gameStatus: GameStatus = GameStatus.Playing
 ) {

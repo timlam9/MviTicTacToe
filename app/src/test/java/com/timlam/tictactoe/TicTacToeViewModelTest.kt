@@ -131,6 +131,6 @@ class TicTacToeViewModelTest {
         Spot(position, player.name)
 
     private fun actualSpotInBoard(state: TicTacToeState, position: Position): Spot =
-        state.board.spots.first { it.position == position }
+        state.spots.first { it.position == position }
 
 }

@@ -24,7 +24,7 @@ class GameEngineTest {
     @Test
     fun `given board is completed but not won, when updating game status, then game status is game over with tie`() {
         every { board.isWon(any()) } returns false
-        every { board.isGameTie() } returns true
+        every { board.isFull() } returns true
 
         val status = gameEngine.updateStatus(board, mockk())
 
@@ -34,7 +34,7 @@ class GameEngineTest {
     @Test
     fun `given board is not completed, when updating game status, then game status is playing`() {
         every { board.isWon(any()) } returns false
-        every { board.isGameTie() } returns false
+        every { board.isFull() } returns false
 
         val status = gameEngine.updateStatus(board, mockk())
 

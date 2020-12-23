@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.timlam.domain.models.Position
+import com.timlam.domain.models.findMarkOfPosition
 import com.timlam.tictactoe.databinding.ActivityMainBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -36,16 +37,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(state: TicTacToeState) {
-        with(state.board) {
-            binding.topLeftSpot.text = markOfSpot(Position.TOP_LEFT)
-            binding.topCenterSpot.text = markOfSpot(Position.TOP_CENTER)
-            binding.topRightSpot.text = markOfSpot(Position.TOP_RIGHT)
-            binding.midLeftSpot.text = markOfSpot(Position.MID_LEFT)
-            binding.midCenterSpot.text = markOfSpot(Position.MID_CENTER)
-            binding.midRightSpot.text = markOfSpot(Position.MID_RIGHT)
-            binding.bottomLeftSpot.text = markOfSpot(Position.BOTTOM_LEFT)
-            binding.bottomCenterSpot.text = markOfSpot(Position.BOTTOM_CENTER)
-            binding.bottomRightSpot.text = markOfSpot(Position.BOTTOM_RIGHT)
+        with(state.spots) {
+            binding.topLeftSpot.text = findMarkOfPosition(Position.TOP_LEFT)
+            binding.topCenterSpot.text = findMarkOfPosition(Position.TOP_CENTER)
+            binding.topRightSpot.text = findMarkOfPosition(Position.TOP_RIGHT)
+            binding.midLeftSpot.text = findMarkOfPosition(Position.MID_LEFT)
+            binding.midCenterSpot.text = findMarkOfPosition(Position.MID_CENTER)
+            binding.midRightSpot.text = findMarkOfPosition(Position.MID_RIGHT)
+            binding.bottomLeftSpot.text = findMarkOfPosition(Position.BOTTOM_LEFT)
+            binding.bottomCenterSpot.text = findMarkOfPosition(Position.BOTTOM_CENTER)
+            binding.bottomRightSpot.text = findMarkOfPosition(Position.BOTTOM_RIGHT)
         }
     }
 

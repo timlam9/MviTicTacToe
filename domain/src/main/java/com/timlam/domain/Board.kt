@@ -3,8 +3,39 @@ package com.timlam.domain
 import com.timlam.domain.models.Player
 import com.timlam.domain.models.Position
 import com.timlam.domain.models.Spot
+import java.lang.Exception
 
-data class Board(val spots: List<Spot> = generateBoard()) {
+class Board {
+
+    object SpotAlreadyMarkedException : Exception()
+
+    private var _spots = generateBoard()
+    val spots: List<Spot>
+        get() = _spots
+
+    fun captureSpot(position: Position, player: Player) {
+        if (!isSpotAvailable(position)) throw SpotAlreadyMarkedException
+        _spots = _spots.filterNot { it.position == position } as MutableList<Spot>
+        _spots.add(Spot(position, player.name))
+    }
+
+    fun isWon(player: Player): Boolean {
+        val currentMoves = currentPlayerMoves(player)
+        return winningCombinations.any { winningSet: Set<Position> ->
+            currentMoves.containsAll(winningSet)
+        }
+    }
+
+    private fun currentPlayerMoves(player: Player) = _spots.filter { spot ->
+        spot.mark == player.name
+    }.map { spot ->
+        spot.position
+    }.toSet()
+
+
+    fun isFull(): Boolean = _spots.all { it.mark.isNotEmpty() }
+
+    private fun isSpotAvailable(position: Position): Boolean = _spots.any { it.position == position && it.mark.isEmpty() }
 
     private val winningCombinations = setOf(
         setOf(
@@ -49,35 +80,20 @@ data class Board(val spots: List<Spot> = generateBoard()) {
         )
     )
 
-    fun isSpotAvailable(position: Position): Boolean = spots.any { it.position == position && it.mark.isEmpty() }
-
-    fun markSpot(position: Position, mark: String): Board {
-        val newSpots = spots.filterNot { it.position == position } as MutableList<Spot>
-        newSpots.add(Spot(position, mark))
-
-        return Board(newSpots)
+    private fun generateBoard(): MutableList<Spot> {
+        return mutableListOf(
+            Spot(Position.TOP_LEFT, ""),
+            Spot(Position.TOP_CENTER, ""),
+            Spot(Position.TOP_RIGHT, ""),
+            Spot(Position.MID_LEFT, ""),
+            Spot(Position.MID_CENTER, ""),
+            Spot(Position.MID_RIGHT, ""),
+            Spot(Position.BOTTOM_LEFT, ""),
+            Spot(Position.BOTTOM_CENTER, ""),
+            Spot(Position.BOTTOM_RIGHT, "")
+        )
     }
 
-    fun markOfSpot(position: Position): String = spots.first { it.position == position }.mark
-
-    fun isWon(player: Player): Boolean =
-        winningCombinations.contains(spots.filter { it.mark == player.name }.map { it.position }.toSet())
-
-    fun isGameTie(): Boolean = spots.all { it.mark.isNotEmpty() }
-
-
 }
 
-private fun generateBoard(): List<Spot> {
-    return listOf(
-        Spot(Position.TOP_LEFT, ""),
-        Spot(Position.TOP_CENTER, ""),
-        Spot(Position.TOP_RIGHT, ""),
-        Spot(Position.MID_LEFT, ""),
-        Spot(Position.MID_CENTER, ""),
-        Spot(Position.MID_RIGHT, ""),
-        Spot(Position.BOTTOM_LEFT, ""),
-        Spot(Position.BOTTOM_CENTER, ""),
-        Spot(Position.BOTTOM_RIGHT, "")
-    )
-}
+
