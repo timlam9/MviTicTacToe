@@ -65,6 +65,21 @@ class TicTacToeViewModelTest {
         job.cancel()
     }
 
+    @Test
+    fun `when player 1 wins, then show player 1 wins message`() = runBlockingTest {
+        val effects = mutableListOf<Effect>()
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.MID_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_CENTER))
+        viewModel.onEvent(Event.OnSpotClicked(Position.MID_CENTER))
+        val job = viewModel.effects.onEach { effects.add(it) }.launchIn(this)
+
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_RIGHT))
+
+        assertEquals(Effect.ShowPlayerWinsMessage(Player.X), effects.first())
+        job.cancel()
+    }
+
     private fun expectedSpot(position: Position, player: Player): Spot = Spot(position, player.name)
 
     private fun actualSpotInBoard(state: TicTacToeState, position: Position): Spot =

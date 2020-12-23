@@ -32,9 +32,17 @@ class TicTacToeViewModel : ViewModel() {
 
     private suspend fun handleSpotClicked(currentState: TicTacToeState, position: Position): TicTacToeState {
         return if (currentState.board.isSpotAvailable(position)) {
+            val board = currentState.board.markSpot(position, currentState.player.name)
+            val gameStatus = if (board.isWon()) {
+                _effects.emit(Effect.ShowPlayerWinsMessage(player = currentState.player))
+                GameStatus.GameOver.PlayerWon(currentState.player)
+            } else
+                GameStatus.Playing
+
             currentState.copy(
-                board = currentState.board.markSpot(position, currentState.player.name),
-                player = currentState.nextPlayer()
+                board = board,
+                player = currentState.nextPlayer(),
+                gameStatus = gameStatus
             )
         } else {
             _effects.emit(Effect.ShowAlreadyMarkedMessage)

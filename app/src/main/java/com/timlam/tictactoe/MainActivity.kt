@@ -52,7 +52,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun resolve(effect: Effect) {
         when (effect) {
-            Effect.ShowAlreadyMarkedMessage -> showSnackbar(getString(R.string.message_spot_already_marked))
+            is Effect.ShowAlreadyMarkedMessage -> showSnackbar(getString(R.string.message_spot_already_marked))
+            is Effect.ShowPlayerWinsMessage -> showSnackbar(effect.player.name + " " + getString(R.string.message_player_wins))
         }
     }
 
