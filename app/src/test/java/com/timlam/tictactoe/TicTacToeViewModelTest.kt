@@ -1,6 +1,7 @@
 package com.timlam.tictactoe
 
 import android.net.sip.SipSession
+import com.timlam.domain.models.GameStatus
 import com.timlam.domain.models.Position
 import com.timlam.domain.models.Player
 import com.timlam.domain.models.Spot
@@ -145,6 +146,27 @@ class TicTacToeViewModelTest {
         viewModel.onEvent(Event.OnSpotClicked(Position.BOTTOM_RIGHT))
 
         assertTrue(states.last().restart)
+        job.cancel()
+    }
+
+    @Test
+    fun `when restart button is clicked, then reset the board`() = runBlockingTest {
+        val states = mutableListOf<TicTacToeState>()
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.MID_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_CENTER))
+        viewModel.onEvent(Event.OnSpotClicked(Position.MID_CENTER))
+        viewModel.onEvent(Event.OnSpotClicked(Position.MID_RIGHT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_RIGHT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.BOTTOM_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.BOTTOM_CENTER))
+        viewModel.onEvent(Event.OnSpotClicked(Position.BOTTOM_RIGHT))
+        val job = viewModel.state.onEach { states.add(it) }.launchIn(this)
+
+        viewModel.onEvent(Event.OnRestartClicked)
+
+        assertTrue(states.last().gameStatus is GameStatus.Playing)
+        assertTrue(states.last().spots.all { it.mark.isEmpty() })
         job.cancel()
     }
 

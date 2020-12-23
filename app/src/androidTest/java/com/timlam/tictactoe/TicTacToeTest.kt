@@ -28,6 +28,9 @@ class TicTacToeTest {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+    private val playerWinsMessage = context.getString(R.string.message_player_wins)
+
     @Test
     fun when_player_1_clicks_an_unmarked_spot_mark_it_as_X() {
         onSpotClicked(R.id.topLeftSpot)
@@ -74,24 +77,30 @@ class TicTacToeTest {
         showPlayerWinsMessage(Player.O)
     }
 
-
     @Test
     fun when_players_ties() {
-        onSpotClicked(R.id.topLeftSpot)
-        onSpotClicked(R.id.midLeftSpot)
-        onSpotClicked(R.id.topCenterSpot)
-        onSpotClicked(R.id.midCenterSpot)
-        onSpotClicked(R.id.midRightSpot)
-        onSpotClicked(R.id.topRightSpot)
-        onSpotClicked(R.id.bottomLeftSpot)
-        onSpotClicked(R.id.bottomCenterSpot)
-        onSpotClicked(R.id.bottomRightSpot)
+        givenACompletedGame()
 
         showTieMessage()
     }
 
     @Test
     fun when_game_over_show_restart_button() {
+        givenACompletedGame()
+
+        assertRestartButtonIsVisible()
+    }
+
+    @Test
+    fun clicking_restart_button_restarts_the_game() {
+        givenACompletedGame()
+
+        onRestartButtonClicked()
+
+        assertBoardIsEmpty()
+    }
+
+    private fun givenACompletedGame() {
         onSpotClicked(R.id.topLeftSpot)
         onSpotClicked(R.id.midLeftSpot)
         onSpotClicked(R.id.topCenterSpot)
@@ -101,13 +110,19 @@ class TicTacToeTest {
         onSpotClicked(R.id.bottomLeftSpot)
         onSpotClicked(R.id.bottomCenterSpot)
         onSpotClicked(R.id.bottomRightSpot)
-
-        assertRestartButtonIsVisible()
     }
 
-    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+    private fun assertBoardIsEmpty() {
+        checkSpotForMark(R.id.topLeftSpot, "")
+        checkSpotForMark(R.id.midLeftSpot, "")
+        checkSpotForMark(R.id.topCenterSpot, "")
+        checkSpotForMark(R.id.midCenterSpot, "")
+        checkSpotForMark(R.id.midRightSpot, "")
+        checkSpotForMark(R.id.topRightSpot, "")
+        checkSpotForMark(R.id.bottomLeftSpot, "")
+        checkSpotForMark(R.id.bottomCenterSpot, "")
+    }
 
-    private val playerWinsMessage = context.getString(R.string.message_player_wins)
     private fun showPlayerWinsMessage(player: Player) = onView(
         withId(com.google.android.material.R.id.snackbar_text)
     ).check(matches(withText(player.name + " " + playerWinsMessage)))
@@ -124,5 +139,7 @@ class TicTacToeTest {
     ).check(matches(withText(R.string.message_spot_already_marked)))
 
     private fun assertRestartButtonIsVisible() = onView(withId(R.id.restart)).check(matches(isDisplayed()))
+
+    private fun onRestartButtonClicked() = onView(withId(R.id.restart)).perform(click())
 
 }

@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mergeFlows(): Flow<Event> =
-        merge<Event>(
+        merge(
             binding.topLeftSpot.clicks().map { Event.OnSpotClicked(Position.TOP_LEFT) },
             binding.topCenterSpot.clicks().map { Event.OnSpotClicked(Position.TOP_CENTER) },
             binding.topRightSpot.clicks().map { Event.OnSpotClicked(Position.TOP_RIGHT) },
@@ -81,7 +81,8 @@ class MainActivity : AppCompatActivity() {
             binding.midRightSpot.clicks().map { Event.OnSpotClicked(Position.MID_RIGHT) },
             binding.bottomLeftSpot.clicks().map { Event.OnSpotClicked(Position.BOTTOM_LEFT) },
             binding.bottomCenterSpot.clicks().map { Event.OnSpotClicked(Position.BOTTOM_CENTER) },
-            binding.bottomRightSpot.clicks().map { Event.OnSpotClicked(Position.BOTTOM_RIGHT) }
+            binding.bottomRightSpot.clicks().map { Event.OnSpotClicked(Position.BOTTOM_RIGHT) },
+            binding.restart.clicks().map { Event.OnRestartClicked }
         )
 
 }

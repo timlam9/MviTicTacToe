@@ -94,6 +94,10 @@ class Board {
         )
     }
 
+    fun reset() {
+        _spots = generateBoard()
+    }
+
 }
 
 

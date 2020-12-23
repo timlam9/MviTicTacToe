@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.timlam.domain.Board
 import com.timlam.domain.GameEngine
 import com.timlam.domain.models.GameStatus
+import com.timlam.domain.models.Player
 import com.timlam.domain.models.Position
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,6 +35,7 @@ class TicTacToeViewModel(
     private suspend fun reduce(currentState: TicTacToeState, event: Event): TicTacToeState {
         return when (event) {
             is Event.OnSpotClicked -> handleSpotClicked(currentState, event.position)
+            is Event.OnRestartClicked -> updateState(currentState, board.apply { reset() }, GameStatus.Playing, Player.X)
         }
     }
 
@@ -59,10 +61,11 @@ class TicTacToeViewModel(
     private fun updateState(
         currentState: TicTacToeState,
         board: Board,
-        gameStatus: GameStatus
+        gameStatus: GameStatus,
+        player: Player = currentState.nextPlayer()
     ) = currentState.copy(
         spots = board.spots,
-        player = currentState.nextPlayer(),
+        player = player,
         gameStatus = gameStatus,
         restart = gameStatus is GameStatus.GameOver
     )

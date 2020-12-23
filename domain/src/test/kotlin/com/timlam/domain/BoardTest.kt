@@ -68,4 +68,21 @@ class BoardTest {
         assertTrue(board.isWon(Player.X))
     }
 
+    @Test
+    fun `when resetting all spots should be empty`() {
+        board.captureSpot(Position.BOTTOM_LEFT, Player.X)
+        board.captureSpot(Position.BOTTOM_CENTER, Player.O)
+        board.captureSpot(Position.MID_LEFT, Player.X)
+        board.captureSpot(Position.TOP_LEFT, Player.O)
+        board.captureSpot(Position.MID_CENTER, Player.X)
+        board.captureSpot(Position.TOP_CENTER, Player.O)
+        board.captureSpot(Position.MID_RIGHT, Player.X)
+
+        board.reset()
+
+        board.spots.forEach {
+            assertTrue(it.mark.isEmpty())
+        }
+    }
+
 }
