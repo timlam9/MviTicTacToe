@@ -4,6 +4,7 @@ import androidx.annotation.IdRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -89,10 +90,24 @@ class TicTacToeTest {
         showTieMessage()
     }
 
+    @Test
+    fun when_game_over_show_restart_button() {
+        onSpotClicked(R.id.topLeftSpot)
+        onSpotClicked(R.id.midLeftSpot)
+        onSpotClicked(R.id.topCenterSpot)
+        onSpotClicked(R.id.midCenterSpot)
+        onSpotClicked(R.id.midRightSpot)
+        onSpotClicked(R.id.topRightSpot)
+        onSpotClicked(R.id.bottomLeftSpot)
+        onSpotClicked(R.id.bottomCenterSpot)
+        onSpotClicked(R.id.bottomRightSpot)
+
+        assertRestartButtonIsVisible()
+    }
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
-    private val playerWinsMessage = context.getString(R.string.message_player_wins)
 
+    private val playerWinsMessage = context.getString(R.string.message_player_wins)
     private fun showPlayerWinsMessage(player: Player) = onView(
         withId(com.google.android.material.R.id.snackbar_text)
     ).check(matches(withText(player.name + " " + playerWinsMessage)))
@@ -107,5 +122,7 @@ class TicTacToeTest {
     private fun showAlreadyMarkedMessage() = onView(
         withId(com.google.android.material.R.id.snackbar_text)
     ).check(matches(withText(R.string.message_spot_already_marked)))
+
+    private fun assertRestartButtonIsVisible() = onView(withId(R.id.restart)).check(matches(isDisplayed()))
 
 }

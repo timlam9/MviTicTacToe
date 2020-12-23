@@ -63,7 +63,8 @@ class TicTacToeViewModel(
     ) = currentState.copy(
         spots = board.spots,
         player = currentState.nextPlayer(),
-        gameStatus = gameStatus
+        gameStatus = gameStatus,
+        restart = gameStatus is GameStatus.GameOver
     )
 
 }

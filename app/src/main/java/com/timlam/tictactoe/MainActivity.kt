@@ -3,6 +3,7 @@ package com.timlam.tictactoe
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.timlam.domain.models.Position
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(state: TicTacToeState) {
+        binding.restart.isVisible = state.restart
+
         with(state.spots) {
             binding.topLeftSpot.text = findMarkOfPosition(Position.TOP_LEFT)
             binding.topCenterSpot.text = findMarkOfPosition(Position.TOP_CENTER)
