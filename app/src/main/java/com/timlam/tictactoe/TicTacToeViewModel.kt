@@ -7,27 +7,21 @@ import com.timlam.domain.GameEngine
 import com.timlam.domain.models.GameStatus
 import com.timlam.domain.models.Player
 import com.timlam.domain.models.Position
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class TicTacToeViewModel(
     private val gameEngine: GameEngine = GameEngine(),
-    private val board: Board = Board()
+    private val board: Board = Board(),
+    private val ticTacToe: TicTacToe = TicTacToe(TicTacToeState(board.spots))
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(TicTacToeState(board.spots))
-    val state = _state.asStateFlow()
-
-    private val _effects = MutableSharedFlow<Effect>(0)
-    val effects = _effects.asSharedFlow()
+    val state = ticTacToe.state
+    val effects = ticTacToe.effects
 
     fun onEvent(event: Event) {
         viewModelScope.launch {
             reduce(state.value, event).apply {
-                _state.value = this
+                ticTacToe.setState(this)
             }
         }
     }
@@ -42,18 +36,18 @@ class TicTacToeViewModel(
     private suspend fun handleSpotClicked(currentState: TicTacToeState, position: Position): TicTacToeState {
         return try {
             board.captureSpot(position, currentState.player)
-            val gameStatus = gameEngine.updateStatus(board, currentState.player).also {
-                when (it) {
-                    is GameStatus.GameOver.PlayerWon -> _effects.emit(Effect.ShowPlayerWinsMessage(player = currentState.player))
-                    is GameStatus.GameOver.Tie -> _effects.emit(Effect.ShowTieMessage)
+            gameEngine.updateStatus(board, currentState.player).let { gameStatus ->
+                when (gameStatus) {
+                    is GameStatus.GameOver.PlayerWon -> ticTacToe.emit(Effect.ShowPlayerWinsMessage(player = currentState.player))
+                    is GameStatus.GameOver.Tie -> ticTacToe.emit(Effect.ShowTieMessage)
                     else -> {
                         // Continue playing without any effects
                     }
                 }
+                updateState(currentState, board, gameStatus)
             }
-            updateState(currentState, board, gameStatus)
         } catch (e: Board.SpotAlreadyMarkedException) {
-            _effects.emit(Effect.ShowAlreadyMarkedMessage)
+            ticTacToe.emit(Effect.ShowAlreadyMarkedMessage)
             currentState
         }
     }
