@@ -49,6 +49,9 @@ class TicTacToeViewModel(
         } catch (e: Board.SpotAlreadyMarkedException) {
             ticTacToe.emit(Effect.ShowAlreadyMarkedMessage)
             currentState
+        } catch (e: Board.GameOverException) {
+            ticTacToe.emit(Effect.ShowGameOverMessageMessage)
+            currentState
         }
     }
 

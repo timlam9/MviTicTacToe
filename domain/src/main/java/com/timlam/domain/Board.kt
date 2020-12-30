@@ -8,16 +8,20 @@ import java.lang.Exception
 class Board {
 
     object SpotAlreadyMarkedException : Exception()
+    object GameOverException : Exception()
 
     private var _spots = generateBoard()
     val spots: List<Spot>
         get() = _spots
 
     fun captureSpot(position: Position, player: Player) {
+        if (isGameOver()) throw GameOverException
         if (!isSpotAvailable(position)) throw SpotAlreadyMarkedException
         _spots = _spots.filterNot { it.position == position } as MutableList<Spot>
         _spots.add(Spot(position, player.name))
     }
+
+    private fun isGameOver() = isFull() || isWon(Player.X) || isWon(Player.O)
 
     fun isWon(player: Player): Boolean {
         val currentMoves = currentPlayerMoves(player)

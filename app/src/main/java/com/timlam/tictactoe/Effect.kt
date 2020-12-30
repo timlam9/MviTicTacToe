@@ -10,4 +10,6 @@ sealed class Effect {
 
     object ShowTieMessage : Effect()
 
+    object ShowGameOverMessageMessage : Effect()
+
 }

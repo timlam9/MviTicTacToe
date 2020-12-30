@@ -100,6 +100,18 @@ class TicTacToeTest {
         assertBoardIsEmpty()
     }
 
+    @Test
+    fun clicking_a_spot_when_the_game_is_over_show_game_over_message() {
+        onSpotClicked(R.id.topLeftSpot)
+        onSpotClicked(R.id.midLeftSpot)
+        onSpotClicked(R.id.topCenterSpot)
+        onSpotClicked(R.id.midCenterSpot)
+        onSpotClicked(R.id.topRightSpot)
+        onSpotClicked(R.id.bottomRightSpot)
+
+        showGameOverMessage()
+    }
+
     private fun givenACompletedGame() {
         onSpotClicked(R.id.topLeftSpot)
         onSpotClicked(R.id.midLeftSpot)
@@ -123,9 +135,8 @@ class TicTacToeTest {
         checkSpotForMark(R.id.bottomCenterSpot, "")
     }
 
-    private fun showPlayerWinsMessage(player: Player) = onView(
-        withId(com.google.android.material.R.id.snackbar_text)
-    ).check(matches(withText(player.name + " " + playerWinsMessage)))
+    private fun showPlayerWinsMessage(player: Player) = onView(withId(com.google.android.material.R.id.snackbar_text))
+        .check(matches(withText(player.name + " " + playerWinsMessage)))
 
     private fun showTieMessage() =
         onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.message_tie)))
@@ -134,12 +145,14 @@ class TicTacToeTest {
 
     private fun checkSpotForMark(@IdRes spotId: Int, mark: String) = onView(withId(spotId)).check(matches(withText(mark)))
 
-    private fun showAlreadyMarkedMessage() = onView(
-        withId(com.google.android.material.R.id.snackbar_text)
-    ).check(matches(withText(R.string.message_spot_already_marked)))
+    private fun showAlreadyMarkedMessage() = onView(withId(com.google.android.material.R.id.snackbar_text))
+        .check(matches(withText(R.string.message_spot_already_marked)))
 
     private fun assertRestartButtonIsVisible() = onView(withId(R.id.restart)).check(matches(isDisplayed()))
 
     private fun onRestartButtonClicked() = onView(withId(R.id.restart)).perform(click())
+
+    private fun showGameOverMessage() = onView(withId(com.google.android.material.R.id.snackbar_text))
+        .check(matches(withText(R.string.message_game_over)))
 
 }

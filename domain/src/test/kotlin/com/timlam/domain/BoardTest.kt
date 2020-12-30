@@ -85,4 +85,17 @@ class BoardTest {
         }
     }
 
+    @Test
+    fun `given game is over, when marking a spot, then through a game over exception`() {
+        board.captureSpot(Position.TOP_LEFT, Player.X)
+        board.captureSpot(Position.BOTTOM_LEFT, Player.O)
+        board.captureSpot(Position.TOP_CENTER, Player.X)
+        board.captureSpot(Position.BOTTOM_CENTER, Player.O)
+        board.captureSpot(Position.TOP_RIGHT, Player.X)
+
+        assertThrows(Board.GameOverException::class.java) {
+            board.captureSpot(Position.BOTTOM_RIGHT, Player.O)
+        }
+    }
+
 }

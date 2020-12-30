@@ -170,6 +170,22 @@ class TicTacToeViewModelTest {
         job.cancel()
     }
 
+    @Test
+    fun `given the game is over, when a spot is clicked, then show game over message`() = runBlockingTest {
+        val effects = mutableListOf<Effect>()
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.BOTTOM_LEFT))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_CENTER))
+        viewModel.onEvent(Event.OnSpotClicked(Position.BOTTOM_CENTER))
+        viewModel.onEvent(Event.OnSpotClicked(Position.TOP_RIGHT))
+        val job = viewModel.effects.onEach { effects.add(it) }.launchIn(this)
+
+        viewModel.onEvent(Event.OnSpotClicked(Position.BOTTOM_RIGHT))
+
+        assertEquals(Effect.ShowGameOverMessageMessage, effects.first())
+        job.cancel()
+    }
+
     private fun expectedSpot(position: Position, player: Player): Spot =
         Spot(position, player.name)
 
