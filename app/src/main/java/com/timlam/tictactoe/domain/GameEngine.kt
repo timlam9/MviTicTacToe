@@ -1,7 +1,4 @@
-package com.timlam.domain
-
-import com.timlam.domain.models.GameStatus
-import com.timlam.domain.models.Player
+package com.timlam.tictactoe.domain
 
 class GameEngine {
 

@@ -1,7 +1,9 @@
-import com.timlam.domain.Board
-import com.timlam.domain.GameEngine
-import com.timlam.domain.models.GameStatus
-import com.timlam.domain.models.Player
+package com.timlam.tictactoe
+
+import com.timlam.tictactoe.domain.Board
+import com.timlam.tictactoe.domain.GameEngine
+import com.timlam.tictactoe.domain.GameStatus
+import com.timlam.tictactoe.domain.Player
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.assertEquals

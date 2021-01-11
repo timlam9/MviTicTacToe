@@ -1,4 +1,4 @@
-package com.timlam.domain.models
+package com.timlam.tictactoe.domain
 
 data class Spot(val position: Position, val mark: String)
 

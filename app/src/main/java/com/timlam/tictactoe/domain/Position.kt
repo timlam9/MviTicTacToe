@@ -1,4 +1,4 @@
-package com.timlam.domain.models
+package com.timlam.tictactoe.domain
 
 enum class Position {
 

@@ -1,6 +1,6 @@
-package com.timlam.tictactoe
+package com.timlam.tictactoe.presentation
 
-import com.timlam.domain.models.Position
+import com.timlam.tictactoe.domain.Position
 
 sealed class Event {
 

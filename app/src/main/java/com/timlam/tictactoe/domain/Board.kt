@@ -1,8 +1,5 @@
-package com.timlam.domain
+package com.timlam.tictactoe.domain
 
-import com.timlam.domain.models.Player
-import com.timlam.domain.models.Position
-import com.timlam.domain.models.Spot
 import java.lang.Exception
 
 class Board {

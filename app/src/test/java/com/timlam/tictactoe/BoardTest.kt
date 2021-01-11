@@ -1,10 +1,10 @@
-package com.timlam.domain
+package com.timlam.tictactoe
 
-import com.timlam.domain.models.Player
-import com.timlam.domain.models.Position
-import com.timlam.domain.models.findMarkOfPosition
+import com.timlam.tictactoe.domain.Board
+import com.timlam.tictactoe.domain.Player
+import com.timlam.tictactoe.domain.Position
+import com.timlam.tictactoe.domain.findMarkOfPosition
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThrows
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -35,8 +35,10 @@ class BoardTest {
     fun `given a spot is already marked, when marking a spot, then through an already marked exception`() {
         board.captureSpot(Position.BOTTOM_CENTER, Player.X)
 
-        assertThrows(Board.SpotAlreadyMarkedException::class.java) {
+        try {
             board.captureSpot(Position.BOTTOM_CENTER, Player.X)
+        } catch (exception: Exception) {
+            assertEquals(Board.SpotAlreadyMarkedException, exception)
         }
     }
 
@@ -93,8 +95,10 @@ class BoardTest {
         board.captureSpot(Position.BOTTOM_CENTER, Player.O)
         board.captureSpot(Position.TOP_RIGHT, Player.X)
 
-        assertThrows(Board.GameOverException::class.java) {
+        try {
             board.captureSpot(Position.BOTTOM_RIGHT, Player.O)
+        } catch (exception: Exception) {
+            assertEquals(Board.GameOverException, exception)
         }
     }
 

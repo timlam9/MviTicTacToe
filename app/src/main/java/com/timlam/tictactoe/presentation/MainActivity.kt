@@ -1,4 +1,4 @@
-package com.timlam.tictactoe
+package com.timlam.tictactoe.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.timlam.domain.models.Position
-import com.timlam.domain.models.findMarkOfPosition
+import com.timlam.tictactoe.R
+import com.timlam.tictactoe.domain.findMarkOfPosition
 import com.timlam.tictactoe.databinding.ActivityMainBinding
+import com.timlam.tictactoe.domain.Position
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn

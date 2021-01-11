@@ -1,10 +1,13 @@
 package com.timlam.tictactoe
 
-import android.net.sip.SipSession
-import com.timlam.domain.models.GameStatus
-import com.timlam.domain.models.Position
-import com.timlam.domain.models.Player
-import com.timlam.domain.models.Spot
+import com.timlam.tictactoe.domain.GameStatus
+import com.timlam.tictactoe.domain.Player
+import com.timlam.tictactoe.domain.Position
+import com.timlam.tictactoe.domain.Spot
+import com.timlam.tictactoe.presentation.Effect
+import com.timlam.tictactoe.presentation.Event
+import com.timlam.tictactoe.presentation.TicTacToeState
+import com.timlam.tictactoe.presentation.TicTacToeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn

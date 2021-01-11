@@ -1,6 +1,6 @@
-package com.timlam.tictactoe
+package com.timlam.tictactoe.presentation
 
-import com.timlam.domain.models.Player
+import com.timlam.tictactoe.domain.Player
 
 sealed class Effect {
 

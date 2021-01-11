@@ -1,8 +1,8 @@
-package com.timlam.tictactoe
+package com.timlam.tictactoe.presentation
 
-import com.timlam.domain.models.GameStatus
-import com.timlam.domain.models.Player
-import com.timlam.domain.models.Spot
+import com.timlam.tictactoe.domain.GameStatus
+import com.timlam.tictactoe.domain.Player
+import com.timlam.tictactoe.domain.Spot
 
 data class TicTacToeState(
     val spots: List<Spot>,

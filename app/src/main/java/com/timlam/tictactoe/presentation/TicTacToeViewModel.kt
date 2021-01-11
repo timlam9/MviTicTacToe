@@ -1,12 +1,12 @@
-package com.timlam.tictactoe
+package com.timlam.tictactoe.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.timlam.domain.Board
-import com.timlam.domain.GameEngine
-import com.timlam.domain.models.GameStatus
-import com.timlam.domain.models.Player
-import com.timlam.domain.models.Position
+import com.timlam.tictactoe.domain.Board
+import com.timlam.tictactoe.domain.GameEngine
+import com.timlam.tictactoe.domain.GameStatus
+import com.timlam.tictactoe.domain.Player
+import com.timlam.tictactoe.domain.Position
 import kotlinx.coroutines.launch
 
 class TicTacToeViewModel(
