@@ -9,7 +9,6 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import com.timlam.main.MainActivity
 import com.timlam.tictactoe.R
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,8 +23,6 @@ class GameCenterTests {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private val context = InstrumentationRegistry.getInstrumentation().targetContext
-
     @Test
     fun when_app_launches_shows_games_center_screen() {
 
@@ -33,7 +30,7 @@ class GameCenterTests {
     }
 
     @Test
-    fun when_first_item_clicked_show_Kata_fragment() {
+    fun when_first_item_clicked_show_tictactoe_fragment() {
         val firstItemPosition = 0
         Espresso.onView(withId(R.id.gameCenterList)).perform(
             actionOnItemAtPosition<GameViewHolder>(

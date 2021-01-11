@@ -3,7 +3,6 @@ package com.timlam.game_center
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.timlam.main.Screen
 import com.timlam.main.viewBinding
 import com.timlam.tictactoe.R
 import com.timlam.tictactoe.databinding.FragmentGameCenterBinding
@@ -27,7 +26,7 @@ class GameCenterFragment : Fragment(R.layout.fragment_game_center) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.gameCenterList.adapter = gamesAdapter
-        gamesAdapter.submitList(listOf(Game(Screen.TicTacToe.name), Game(Screen.Hangman.name)))
+        gamesAdapter.submitList(listOf(Game(Games.TicTacToe.name), Game(Games.Hangman.name)))
     }
 
 }
