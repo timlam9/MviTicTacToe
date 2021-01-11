@@ -7,10 +7,18 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.timlam.tictactoe.databinding.ItemGameBinding
 
-class GamesAdapter : ListAdapter<Game, GameViewHolder>(GameDiff()) {
+class GamesAdapter(private val onClick: (Game) -> Unit) : ListAdapter<Game, GameViewHolder>(GameDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
-        return GameViewHolder(ItemGameBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return GameViewHolder(
+            ItemGameBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        ).also { gameViewHolder ->
+            gameViewHolder.itemView.setOnClickListener { onClick(getItem(gameViewHolder.adapterPosition)) }
+        }
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {

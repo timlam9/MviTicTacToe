@@ -7,11 +7,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.timlam.main.clicks
+import com.timlam.main.viewBinding
 import com.timlam.tictactoe.R
 import com.timlam.tictactoe.databinding.FragmentTictactoeBinding
 import com.timlam.tictactoe.domain.Position
 import com.timlam.tictactoe.domain.findMarkOfPosition
-import com.timlam.viewBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
@@ -20,7 +21,7 @@ import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 
 @ExperimentalCoroutinesApi
-class TicTacToeFragment : Fragment() {
+class TicTacToeFragment : Fragment(R.layout.fragment_tictactoe) {
 
     private val viewModel by viewModels<TicTacToeViewModel>()
     private val binding by viewBinding(FragmentTictactoeBinding::bind)
