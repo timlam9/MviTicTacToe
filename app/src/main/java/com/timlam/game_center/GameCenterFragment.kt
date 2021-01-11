@@ -1,19 +1,22 @@
-package com.timlam.tictactoe.game_center
+package com.timlam.game_center
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.timlam.tictactoe.R
+import com.timlam.tictactoe.databinding.FragmentGameCenterBinding
+import com.timlam.viewBinding
 
-class GameCenterFragment : Fragment() {
+class GameCenterFragment : Fragment(R.layout.fragment_game_center) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_game_center, container, false)
+    private val binding by viewBinding(FragmentGameCenterBinding::bind)
+    private val gamesAdapter = GamesAdapter()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.gameCenterList.adapter = gamesAdapter
+        gamesAdapter.submitList(listOf(Game("TicTacToe"), Game("Hangman")))
     }
 
 }

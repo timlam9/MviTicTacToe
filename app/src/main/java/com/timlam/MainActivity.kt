@@ -2,8 +2,8 @@ package com.timlam
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.timlam.game_center.GameCenterFragment
 import com.timlam.tictactoe.R
-import com.timlam.tictactoe.game_center.GameCenterFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi

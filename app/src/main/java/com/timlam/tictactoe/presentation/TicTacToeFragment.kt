@@ -11,6 +11,7 @@ import com.timlam.tictactoe.R
 import com.timlam.tictactoe.databinding.FragmentTictactoeBinding
 import com.timlam.tictactoe.domain.Position
 import com.timlam.tictactoe.domain.findMarkOfPosition
+import com.timlam.viewBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
