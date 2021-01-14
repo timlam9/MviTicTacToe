@@ -18,12 +18,10 @@ class Word(value: String) {
         if (revealingLetter.revealed) "$word${revealingLetter.letter}" else "${word}_"
     }
 
-    private fun String.generateSpacesWord(): String = fold("") { word, char -> "$word$char " }
-
     private fun String.generateRevealingWord(): List<RevealingLetter> = map { RevealingLetter(it) }
 
     override fun toString(): String {
-        return generateUnderscoreWord().generateSpacesWord().trimEnd()
+        return generateUnderscoreWord().appendSpacesBetweenChars().trimEnd()
     }
 
 }
