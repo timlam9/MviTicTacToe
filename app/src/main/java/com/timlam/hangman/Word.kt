@@ -14,14 +14,10 @@ class Word(value: String) {
         }
     }
 
-    private fun generateUnderscoreWord(): String = revealingLetters.fold("") { word, revealingLetter ->
-        if (revealingLetter.revealed) "$word${revealingLetter.letter}" else "${word}_"
-    }
-
     private fun String.generateRevealingWord(): List<RevealingLetter> = map { RevealingLetter(it) }
 
     override fun toString(): String {
-        return generateUnderscoreWord().appendSpacesBetweenChars().trimEnd()
+        return revealingLetters.joinToString(" ") { it.toString() }.trimEnd()
     }
 
 }

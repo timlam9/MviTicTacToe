@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="TAGARA" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="961303d4-95e2-4355-8b66-c0f75d6e4b94" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/timlam/hangman/HangmanFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/timlam/hangman/HangmanViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/timlam/hangman/WordsGenerator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hangman.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/timlam/hangman/HangmanViewModelTests.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/timlam/hangman/HangmanTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/timlam/hangman/HangmanTests.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/timlam/game_center/GameCenterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/timlam/game_center/GameCenterFragment.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[711KPLC0637488]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TicTacToe" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TicTacToe" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TicTacToe" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TicTacToe" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TicTacToe" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TicTacToe" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="JUnit4 Test Class" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lyHpQpuFxhPXo5J4cuunMhRxSg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5X_API_29_A10" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-10T14:28:57.548Z" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/test/java/com/timlam/tictactoe" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="hangman" />
+      <recent name="com.timlam.hangman" />
+      <recent name="com.timlam.game_center" />
+      <recent name="com.timlam.main" />
+      <recent name="com.timlam" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.timlam.game_center" />
+      <recent name="" />
+      <recent name="com.timlam.tictactoe" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.timlam.domain" />
+      <recent name="com.timlam.tictactoe" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.timlam" />
+      <recent name="com.timlam.tictactoe" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/timlam/main" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/timlam/tictactoe/presentation" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/timlam/tictactoe/domain" />
+      <recent name="$PROJECT_DIR$/app/src/test/java/com/timlam/tictactoe" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="HangmanTests" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TicTacToe.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.timlam.hangman.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.timlam.hangman" />
+      <option name="MAIN_CLASS_NAME" value="com.timlam.hangman.HangmanTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="TicTacToe.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="when_app_launches_...()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="TicTacToe.app" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="METHOD_NAME" value="when_app_launches_shows_games_center_screen" />
+      <option name="CLASS_NAME" value="com.timlam.game_center.GameCenterTests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="when_first_item_cl...() (1)" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="TicTacToe.app" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="METHOD_NAME" value="when_first_item_clicked_show_tictactoe_fragment" />
+      <option name="CLASS_NAME" value="com.timlam.game_center.GameCenterTests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="when_first_item_cl...()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="TicTacToe.app" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="METHOD_NAME" value="when_first_item_clicked_show_Kata_fragment" />
+      <option name="CLASS_NAME" value="com.timlam.game_center.GameCenterTests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HangmanTests.when a game starts pick a random word" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TicTacToe.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.timlam.hangman.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.timlam.hangman" />
+      <option name="MAIN_CLASS_NAME" value="com.timlam.hangman.HangmanTests" />
+      <option name="METHOD_NAME" value="when a game starts pick a random word" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android JUnit.HangmanTests" />
+        <item itemvalue="Android Instrumented Tests.when_first_item_cl...() (1)" />
+        <item itemvalue="Android Instrumented Tests.when_first_item_cl...()" />
+        <item itemvalue="Android Instrumented Tests.when_app_launches_...()" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="961303d4-95e2-4355-8b66-c0f75d6e4b94" name="Default Changelist" comment="" />
+      <created>1608562592836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608562592836</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Clear unused code">
+      <created>1608632417582</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608632417582</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Handle an already marked spot">
+      <created>1608636314538</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608636314538</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Mark a spot as 'O' when player two clicks it">
+      <created>1608641136577</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608641136577</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Refactor feature tests">
+      <created>1608641803775</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608641803775</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactor view model tests">
+      <created>1608642278171</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608642278171</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor main activity">
+      <created>1608642442877</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1608642442877</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Create rest of the board">
+      <created>1608644178794</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608644178794</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Handle player one winning the game">
+      <created>1608713207806</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608713207806</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Handle player two winning the game">
+      <created>1608713632737</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608713632737</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Handle players tie">
+      <created>1608715525227</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608715525227</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Introduce domain module">
+      <created>1608723311786</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1608723311786</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add tests to board">
+      <created>1608731248490</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608731248490</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Show restart button on game over">
+      <created>1608732004848</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608732004848</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Reset game on restart button clicked">
+      <created>1608733347681</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608733347681</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Introduce tic tac toe class">
+      <created>1609317441470</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1609317441470</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Show game over message when a spot is clicked and the game is already over">
+      <created>1609338902470</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1609338902470</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Remove domain module">
+      <created>1610363064181</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1610363064181</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add firebase">
+      <created>1610363368950</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1610363368950</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Introduce game center fragment">
+      <created>1610370486058</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1610370486058</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Reordering of packages">
+      <created>1610370665313</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1610370665313</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Show game center fragment">
+      <created>1610372048022</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1610372048022</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Navigate to TicTacToe fragment">
+      <created>1610373864120</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1610373864120</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Refactor TicTacToe fragment navigation">
+      <created>1610374128837</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1610374128837</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Clear unused code" />
+    <MESSAGE value="Handle an already marked spot" />
+    <MESSAGE value="Mark a spot as 'O' when player two clicks it" />
+    <MESSAGE value="Refactor feature tests" />
+    <MESSAGE value="Refactor view model tests" />
+    <MESSAGE value="Refactor main activity" />
+    <MESSAGE value="Create rest of the board" />
+    <MESSAGE value="Handle player one winning the game" />
+    <MESSAGE value="Handle player two winning the game" />
+    <MESSAGE value="Handle players tie" />
+    <MESSAGE value="Introduce domain module" />
+    <MESSAGE value="Add tests to board" />
+    <MESSAGE value="Show restart button on game over" />
+    <MESSAGE value="Reset game on restart button clicked" />
+    <MESSAGE value="Introduce tic tac toe class" />
+    <MESSAGE value="Show game over message when a spot is clicked and the game is already over" />
+    <MESSAGE value="Remove domain module" />
+    <MESSAGE value="Add firebase" />
+    <MESSAGE value="Introduce game center fragment" />
+    <MESSAGE value="Reordering of packages" />
+    <MESSAGE value="Show game center fragment" />
+    <MESSAGE value="Navigate to TicTacToe fragment" />
+    <MESSAGE value="Refactor TicTacToe fragment navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor TicTacToe fragment navigation" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="598" y="331" key="#Notifications" timestamp="1608712835814">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="598" y="331" key="#Notifications/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608712835814" />
+    <state x="245" y="200" key="#PSD" timestamp="1610362991381">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="245" y="200" key="#PSD/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610362991381" />
+    <state x="100" y="103" width="1240" height="695" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1608731054845">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="103" width="1240" height="695" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1440.900/-1680.0.1680.1050@0.0.1440.900" timestamp="1608731054845" />
+    <state x="100" y="123" width="1240" height="677" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608726798057" />
+    <state x="499" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1610370959776">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="499" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610370959776" />
+    <state x="270" y="393" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1610446670410">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="270" y="393" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610446670410" />
+    <state x="484" y="350" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1610446671981">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="484" y="350" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610446671981" />
+    <state x="480" y="265" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1608637740694">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="480" y="265" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608637740694" />
+    <state x="484" y="247" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1610446653028">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="484" y="247" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610446653028" />
+    <state x="308" y="223" key="AndroidCreateResourceFileDialog" timestamp="1610444837439">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="308" y="223" key="AndroidCreateResourceFileDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610444837439" />
+    <state x="542" y="246" key="AndroidCreateXmlResourceDialog" timestamp="1610364304218">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="542" y="246" key="AndroidCreateXmlResourceDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610364304218" />
+    <state x="542" y="246" key="AndroidCreateXmlResourceDialog/0.23.1440.877@0.23.1440.877" timestamp="1609338496828" />
+    <state x="221" y="27" key="CommitChangelistDialog2" timestamp="1610374128656">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="221" y="27" key="CommitChangelistDialog2/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610374128656" />
+    <state x="221" y="27" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1610287400401" />
+    <state x="0" y="23" width="1440" height="877" key="DiffContextDialog" timestamp="1610287396981">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="87" y="90" key="DiffContextDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608712727258" />
+    <state x="0" y="23" width="1440" height="877" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1610287396981" />
+    <state x="146" y="53" width="1002" height="476" key="Github.ShareDialog" timestamp="1608629405038">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="146" y="53" width="1002" height="476" key="Github.ShareDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608629405038" />
+    <state x="503" y="173" key="Github.UntrackedFilesDialog" timestamp="1608629466906">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="503" y="173" key="Github.UntrackedFilesDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608629466906" />
+    <state width="1396" height="352" key="GridCell.Tab.0.bottom" timestamp="1610467582902">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="528" key="GridCell.Tab.0.bottom/0.0.1440.900/-1680.0.1680.1050@0.0.1440.900" timestamp="1608730985465" />
+    <state width="1396" height="352" key="GridCell.Tab.0.bottom/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610467582902" />
+    <state width="1396" height="497" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1609338916622" />
+    <state width="1396" height="352" key="GridCell.Tab.0.center" timestamp="1610467582901">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="528" key="GridCell.Tab.0.center/0.0.1440.900/-1680.0.1680.1050@0.0.1440.900" timestamp="1608730985464" />
+    <state width="1396" height="352" key="GridCell.Tab.0.center/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610467582901" />
+    <state width="1396" height="497" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1609338916622" />
+    <state width="1396" height="352" key="GridCell.Tab.0.left" timestamp="1610467582901">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="528" key="GridCell.Tab.0.left/0.0.1440.900/-1680.0.1680.1050@0.0.1440.900" timestamp="1608730985463" />
+    <state width="1396" height="352" key="GridCell.Tab.0.left/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610467582901" />
+    <state width="1396" height="497" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1609338916621" />
+    <state width="1396" height="352" key="GridCell.Tab.0.right" timestamp="1610467582901">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="528" key="GridCell.Tab.0.right/0.0.1440.900/-1680.0.1680.1050@0.0.1440.900" timestamp="1608730985465" />
+    <state width="1396" height="352" key="GridCell.Tab.0.right/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610467582901" />
+    <state width="1396" height="497" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1609338916622" />
+    <state width="1396" height="252" key="GridCell.Tab.1.bottom" timestamp="1610361097273">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="252" key="GridCell.Tab.1.bottom/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610361097273" />
+    <state width="1396" height="252" key="GridCell.Tab.1.center" timestamp="1610361097272">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="252" key="GridCell.Tab.1.center/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610361097272" />
+    <state width="1396" height="252" key="GridCell.Tab.1.left" timestamp="1610361097272">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="252" key="GridCell.Tab.1.left/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610361097272" />
+    <state width="1396" height="252" key="GridCell.Tab.1.right" timestamp="1610361097272">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1396" height="252" key="GridCell.Tab.1.right/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610361097272" />
+    <state x="519" y="386" key="ReplaceDuplicatesPrompt" timestamp="1608733270290">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="519" y="386" key="ReplaceDuplicatesPrompt/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608733270290" />
+    <state x="350" y="161" key="RollbackChangesDialog" timestamp="1610361741914">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="350" y="161" key="RollbackChangesDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610361741914" />
+    <state x="221" y="100" key="SettingsEditor" timestamp="1608712873526">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="221" y="100" key="SettingsEditor/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608712873526" />
+    <state x="570" y="383" key="VCS.ChangelistChooser" timestamp="1610446589911">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="570" y="383" key="VCS.ChangelistChooser/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610446589911" />
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2" timestamp="1609339080016">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608733351175" />
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1609339080016" />
+    <state x="497" y="246" key="chooseDestDirectoryDialog" timestamp="1608563924082">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="497" y="246" key="chooseDestDirectoryDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608563924082" />
+    <state x="100" y="123" width="1240" height="677" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1610361097343">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="100" y="123" width="1240" height="677" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610361097343" />
+    <state x="503" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610373946745">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="503" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610373946745" />
+    <state x="412" y="216" width="615" height="490" key="find.popup" timestamp="1610370520650">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="412" y="216" width="615" height="490" key="find.popup/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610370520650" />
+    <state x="412" y="216" width="615" height="548" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1609338021405" />
+    <state x="397" y="257" key="git4idea.merge.GitPullDialog" timestamp="1609746875789">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="397" y="257" key="git4idea.merge.GitPullDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1609746875789" />
+    <state x="481" y="297" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1608723730421">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="481" y="297" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1608723730421" />
+    <state x="560" y="253" key="refactoring.ChangeSignatureDialog" timestamp="1610372645243">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="560" y="253" key="refactoring.ChangeSignatureDialog/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610372645243" />
+    <state x="385" y="211" key="run.anything.popup" timestamp="1610364487833">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="211" key="run.anything.popup/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610364487833" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1610457004116">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877/-1680.23.1680.1027@0.23.1440.877" timestamp="1610457004116" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1609338204421" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/timlam/tictactoe/presentation/TicTacToeViewModel.kt</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="AndroidJUnit">
+        <watch expression="board" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
