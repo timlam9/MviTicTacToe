@@ -8,9 +8,12 @@ class Word(value: String) {
         revealingLetters = value.generateRevealingWord()
     }
 
-    fun revealLetter(letter: Char) {
-        revealingLetters.filter { it.letter.equals(letter, true) }.forEach {
-            it.revealed = true
+    fun revealLetter(letter: Char): Boolean {
+        revealingLetters.filter { it.letter.equals(letter, true) }.also { list ->
+            list.forEach {
+                it.revealed = true
+            }
+            return list.count() > 0
         }
     }
 

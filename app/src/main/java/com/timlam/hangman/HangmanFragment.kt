@@ -7,6 +7,7 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import com.timlam.main.viewBinding
 import com.timlam.tictactoe.R
 import com.timlam.tictactoe.databinding.FragmentHangmanBinding
@@ -21,20 +22,21 @@ class HangmanFragment : Fragment(R.layout.fragment_hangman) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         generateGrid()
+        viewModel.displayingWord.onEach { binding.hangmanWord.text = it }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.clickedCharacters.onEach(::nullifyButtons).launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.gameStatus.onEach(::showLostMessage).launchIn(viewLifecycleOwner.lifecycleScope)
+    }
 
-        viewModel.displayingWord.onEach {
-            binding.hangmanWord.text = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    private fun nullifyButtons(set: Set<Char>) {
+        binding.buttonsContainer.children.filterIsInstance<Button>()
+            .filter { it.text.toString().any { char -> set.contains(char) } }.forEach {
+                it.background = binding.root.background
+                it.setOnClickListener(null)
+            }
+    }
 
-        viewModel.clickedCharacters.onEach { set ->
-            binding.buttonsContainer.children.filterIsInstance<Button>()
-                .filter { it.text.toString().any { char -> set.contains(char) } }.forEach {
-                    it.background = binding.root.background
-                    it.setOnClickListener(null)
-                }
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.startGame()
+    private fun showLostMessage(it: GameStatus) {
+        if (it == GameStatus.LOST) Snackbar.make(binding.root, "You lost noob!", Snackbar.LENGTH_SHORT).show()
     }
 
     private fun generateGrid() {
