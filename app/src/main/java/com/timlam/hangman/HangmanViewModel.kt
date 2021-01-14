@@ -9,34 +9,16 @@ class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerat
     private val _displayingWord = MutableStateFlow("")
     val displayingWord: StateFlow<String> = _displayingWord
 
-    private var revealingWord = listOf<RevealingLetter>()
-    private var playingWord = ""
-
-    private fun generateUnderscoreWord(): String = revealingWord.fold("") { word, revealingLetter ->
-        if (revealingLetter.revealed) "$word${revealingLetter.letter}" else "${word}_"
-    }
-
-    private fun revealLetter(letter: Char) {
-        revealingWord.filter { it.letter.equals(letter, true) }.forEach {
-            it.revealed = true
-        }
-    }
-
-    private fun String.generateSpacesWord(): String = fold("") { word, char -> "$word$char " }
-
-    private fun String.generateRevealingWord(): List<RevealingLetter> = map { RevealingLetter(it) }
+    private lateinit var word: Word
 
     fun startGame() {
-        playingWord = wordsGenerator.generateRandomWord()
-        revealingWord = playingWord.generateRevealingWord()
-        _displayingWord.value = generateUnderscoreWord().generateSpacesWord().trimEnd()
+        word = Word(wordsGenerator.generateRandomWord())
+        _displayingWord.value = word.toString()
     }
 
     fun characterClicked(letter: Char) {
-        if (playingWord.contains(letter, true)) {
-            revealLetter(letter)
-            _displayingWord.value = generateUnderscoreWord().generateSpacesWord().trimEnd()
-        }
+        word.revealLetter(letter)
+        _displayingWord.value = word.toString()
     }
 
 }
