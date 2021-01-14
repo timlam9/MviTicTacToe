@@ -3,6 +3,7 @@ package com.timlam.game_center
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.timlam.hangman.HangmanFragment
 import com.timlam.main.viewBinding
 import com.timlam.tictactoe.R
 import com.timlam.tictactoe.databinding.FragmentGameCenterBinding
@@ -14,9 +15,15 @@ class GameCenterFragment : Fragment(R.layout.fragment_game_center) {
     private val binding by viewBinding(FragmentGameCenterBinding::bind)
 
     @ExperimentalCoroutinesApi
-    private val gamesAdapter = GamesAdapter {
+    private val gamesAdapter = GamesAdapter { game ->
+        val fragment = if (game.title == Games.TicTacToe.name) {
+            TicTacToeFragment()
+        } else {
+            HangmanFragment()
+        }
+
         parentFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainer, TicTacToeFragment())
+            replace(R.id.fragmentContainer, fragment)
             addToBackStack(null)
             commit()
         }
