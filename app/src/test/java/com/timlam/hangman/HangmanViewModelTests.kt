@@ -19,24 +19,31 @@ class HangmanViewModelTests {
     @Before
     fun before() {
         every { wordsGenerator.generateRandomWord() } returns randomPlayingWord
+        viewModel.startGame()
     }
 
     @Test
     fun `when a game starts pick a random word and display it with underscores`() {
         val displayedWordSize = (randomPlayingWord.length * 2) - 1
 
-        viewModel.startGame()
-
         assertEquals(displayedWordSize, viewModel.displayingWord.value.length)
     }
 
     @Test
     fun `display clicked character if the word contains it`() {
-        viewModel.startGame()
+        val clickedChar = 't'
+        val semiRevealedWord = Word(randomPlayingWord).apply { revealLetter(clickedChar) }
 
-        viewModel.characterClicked('t')
+        viewModel.characterClicked(clickedChar)
 
-        assertEquals("t _ t _ _ _ _ _ _ _ _ t _ _", viewModel.displayingWord.value)
+        assertEquals(semiRevealedWord.toString(), viewModel.displayingWord.value)
+    }
+
+    @Test
+    fun `clicking a character renders it pressed`() {
+        viewModel.characterClicked('o')
+
+        assertEquals(setOf('o'), viewModel.clickedCharacters.value)
     }
 
 }

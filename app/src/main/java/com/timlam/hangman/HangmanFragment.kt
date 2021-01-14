@@ -3,6 +3,7 @@ package com.timlam.hangman
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -19,13 +20,24 @@ class HangmanFragment : Fragment(R.layout.fragment_hangman) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        generateGrid()
 
         viewModel.displayingWord.onEach {
             binding.hangmanWord.text = it
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
-        viewModel.startGame()
+        viewModel.clickedCharacters.onEach { set ->
+            binding.buttonsContainer.children.filterIsInstance<Button>()
+                .filter { it.text.toString().any { char -> set.contains(char) } }.forEach {
+                    it.background = binding.root.background
+                    it.setOnClickListener(null)
+                }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
+        viewModel.startGame()
+    }
+
+    private fun generateGrid() {
         ('A'..'Z').forEach { letter ->
             Button(context).apply {
                 text = letter.toString()

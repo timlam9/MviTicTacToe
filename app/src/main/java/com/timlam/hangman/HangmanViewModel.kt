@@ -6,6 +6,9 @@ import kotlinx.coroutines.flow.StateFlow
 
 class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerator()) : ViewModel() {
 
+    private val _clickedCharacters = MutableStateFlow<Set<Char>>(emptySet())
+    val clickedCharacters: StateFlow<Set<Char>> = _clickedCharacters
+
     private val _displayingWord = MutableStateFlow("")
     val displayingWord: StateFlow<String> = _displayingWord
 
@@ -19,6 +22,7 @@ class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerat
     fun characterClicked(letter: Char) {
         word.revealLetter(letter)
         _displayingWord.value = word.toString()
+        _clickedCharacters.value = _clickedCharacters.value + letter
     }
 
 }
