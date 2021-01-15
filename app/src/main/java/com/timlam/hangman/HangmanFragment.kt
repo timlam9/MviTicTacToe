@@ -3,7 +3,9 @@ package com.timlam.hangman
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -21,34 +23,44 @@ class HangmanFragment : Fragment(R.layout.fragment_hangman) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        generateGrid()
+        initializeUI()
         viewModel.displayingWord.onEach { binding.hangmanWord.text = it }.launchIn(viewLifecycleOwner.lifecycleScope)
         viewModel.clickedCharacters.onEach(::nullifyButtons).launchIn(viewLifecycleOwner.lifecycleScope)
-        viewModel.gameStatus.onEach(::showLostMessage).launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.gameStatus.onEach(::handleGameStatus).launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun nullifyButtons(set: Set<Char>) {
         binding.buttonsContainer.children.filterIsInstance<Button>()
-            .filter { it.text.toString().any { char -> set.contains(char) } }.forEach {
-                it.background = binding.root.background
-                it.setOnClickListener(null)
+            .forEach { button ->
+                if (set.contains(button.text.first())) {
+                    button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    button.setOnClickListener(null)
+                } else {
+                    button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple_500))
+                    button.setOnClickListener {
+                        viewModel.characterClicked(button.text.first())
+                    }
+                }
             }
     }
 
-    private fun showLostMessage(it: GameStatus) {
-        if (it == GameStatus.LOST) Snackbar.make(binding.root, "You lost noob!", Snackbar.LENGTH_SHORT).show()
+    private fun handleGameStatus(gameStatus: GameStatus) {
+        if (gameStatus == GameStatus.LOST) Snackbar.make(binding.root, "You lost noob!", Snackbar.LENGTH_SHORT).show()
+        binding.restartButton.isVisible = gameStatus != GameStatus.PLAYING
     }
 
-    private fun generateGrid() {
+    private fun initializeUI() {
         ('A'..'Z').forEach { letter ->
             Button(context).apply {
                 text = letter.toString()
+                setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple_500))
                 binding.buttonsContainer.addView(this)
                 setOnClickListener {
                     viewModel.characterClicked(letter)
                 }
             }
         }
+        binding.restartButton.setOnClickListener { viewModel.restartButtonClicked() }
     }
 
 }

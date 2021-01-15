@@ -71,4 +71,12 @@ class HangmanViewModelTests {
 
         assertEquals(GameStatus.LOST, viewModel.gameStatus.value)
     }
+
+    @Test
+    fun `when restart button is clicked then restart the game`() {
+        viewModel.restartButtonClicked()
+
+        assertEquals(GameStatus.PLAYING, viewModel.gameStatus.value)
+    }
+
 }

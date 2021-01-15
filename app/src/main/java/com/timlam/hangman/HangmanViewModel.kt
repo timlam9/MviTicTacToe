@@ -30,7 +30,9 @@ class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerat
     private fun startGame() {
         word = Word(wordsGenerator.generateRandomWord())
         _displayingWord.value = word.toString()
+        _clickedCharacters.value = emptySet()
         _lives.value = 5
+        _gameStatus.value = GameStatus.PLAYING
     }
 
     private fun trackLives(lives: Int) {
@@ -43,6 +45,10 @@ class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerat
         if (!word.revealLetter(letter)) _lives.value--
         _displayingWord.value = word.toString()
         _clickedCharacters.value = _clickedCharacters.value + letter
+    }
+
+    fun restartButtonClicked() {
+        startGame()
     }
 
 }
