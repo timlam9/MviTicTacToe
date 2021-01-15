@@ -47,7 +47,11 @@ class HangmanFragment : Fragment(R.layout.fragment_hangman) {
     }
 
     private fun handleGameStatus(gameStatus: GameStatus) {
-        if (gameStatus == GameStatus.LOST) Snackbar.make(binding.root, "You lost noob!", Snackbar.LENGTH_SHORT).show()
+        if (gameStatus == GameStatus.LOST)
+            Snackbar.make(binding.root, "You lost noob!", Snackbar.LENGTH_SHORT).show()
+        else if (gameStatus == GameStatus.WON)
+            Snackbar.make(binding.root, "What a player! You nailed it!", Snackbar.LENGTH_SHORT).show()
+
         binding.restartButton.isVisible = gameStatus != GameStatus.PLAYING
     }
 

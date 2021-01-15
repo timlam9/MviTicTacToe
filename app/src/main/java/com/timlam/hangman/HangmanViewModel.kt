@@ -24,8 +24,9 @@ class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerat
     private lateinit var word: Word
 
     init {
-        _lives.onEach(::trackLives).launchIn(viewModelScope)
         startGame()
+        _lives.onEach(::trackLives).launchIn(viewModelScope)
+        _clickedCharacters.onEach { isPlayerWon() }.launchIn(viewModelScope)
     }
 
     private fun startGame() {
@@ -40,9 +41,12 @@ class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerat
         _gameStatus.value = if (lives == 0) GameStatus.LOST else GameStatus.PLAYING
     }
 
-    fun characterClicked(letter: Char) {
-        if (_gameStatus.value == GameStatus.LOST) return
+    private fun isPlayerWon() {
+        if (word.areAllLettersRevealed()) _gameStatus.value = GameStatus.WON
+    }
 
+    fun characterClicked(letter: Char) {
+        if (_gameStatus.value != GameStatus.PLAYING) return
         if (!word.revealLetter(letter)) _lives.value--
         _displayingWord.value = word.toString()
         _clickedCharacters.value = _clickedCharacters.value + letter

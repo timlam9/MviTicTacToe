@@ -17,6 +17,8 @@ class Word(value: String) {
         }
     }
 
+    fun areAllLettersRevealed() = revealingLetters.filter { it.revealed }.size == revealingLetters.size
+
     private fun String.generateRevealingWord(): List<RevealingLetter> = map { RevealingLetter(it) }
 
     override fun toString(): String {

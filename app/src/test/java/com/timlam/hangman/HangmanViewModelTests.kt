@@ -79,4 +79,19 @@ class HangmanViewModelTests {
         assertEquals(GameStatus.PLAYING, viewModel.gameStatus.value)
     }
 
+    @Test
+    fun `when clicking all the correct letters you win the game`() {
+        viewModel.characterClicked('t')
+        viewModel.characterClicked('i')
+        viewModel.characterClicked('a')
+        viewModel.characterClicked('n')
+        viewModel.characterClicked('o')
+        viewModel.characterClicked('m')
+        viewModel.characterClicked('e')
+        viewModel.characterClicked('g')
+        viewModel.characterClicked('s')
+
+        assertEquals(GameStatus.WON, viewModel.gameStatus.value)
+    }
+
 }

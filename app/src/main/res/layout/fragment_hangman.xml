@@ -43,7 +43,7 @@
         android:id="@+id/restartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="64dp"
         android:padding="8dp"
         android:text="@string/restart_game"
         android:visibility="gone"
