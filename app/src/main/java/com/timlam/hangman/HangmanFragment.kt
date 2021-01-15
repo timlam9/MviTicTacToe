@@ -24,8 +24,8 @@ class HangmanFragment : Fragment(R.layout.fragment_hangman) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeUI()
-        viewModel.displayingWord.onEach { binding.hangmanWord.text = it }.launchIn(viewLifecycleOwner.lifecycleScope)
-        viewModel.clickedCharacters.onEach(::nullifyButtons).launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.word.onEach { binding.hangmanWord.text = it }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.alreadySelectedCharacters.onEach(::nullifyButtons).launchIn(viewLifecycleOwner.lifecycleScope)
         viewModel.gameStatus.onEach(::handleGameStatus).launchIn(viewLifecycleOwner.lifecycleScope)
         viewModel.lives.onEach { binding.hangmanLives.text = getString(R.string.lives, it.toString()) }
             .launchIn(viewLifecycleOwner.lifecycleScope)

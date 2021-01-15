@@ -2,58 +2,32 @@ package com.timlam.hangman
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerator()) : ViewModel() {
+class HangmanViewModel(private val gameEngine: GameEngine = GameEngine(WordsGenerator())) : ViewModel() {
 
-    private val _gameStatus = MutableStateFlow(GameStatus.PLAYING)
-    val gameStatus: StateFlow<GameStatus> = _gameStatus
+    val gameStatus: StateFlow<GameStatus> = gameEngine.gameStatus
+    val word: StateFlow<String> = gameEngine.displayingWord
+    val alreadySelectedCharacters: StateFlow<Set<Char>> = gameEngine.clickedCharacters
+    val lives: StateFlow<Int> = gameEngine.lives
 
-    private val _clickedCharacters = MutableStateFlow<Set<Char>>(emptySet())
-    val clickedCharacters: StateFlow<Set<Char>> = _clickedCharacters
-
-    private val _displayingWord = MutableStateFlow("")
-    val displayingWord: StateFlow<String> = _displayingWord
-
-    private val _lives = MutableStateFlow(5)
-    val lives: StateFlow<Int> = _lives
-
-    private lateinit var word: Word
 
     init {
-        startGame()
-        _lives.onEach(::trackLives).launchIn(viewModelScope)
-        _clickedCharacters.onEach { isPlayerWon() }.launchIn(viewModelScope)
+        gameEngine.startGame()
+        gameEngine.lives.onEach { gameEngine.trackLives(it) }.launchIn(viewModelScope)
+        gameEngine.clickedCharacters.onEach { gameEngine.hasPlayerWon() }.launchIn(viewModelScope)
     }
 
-    private fun startGame() {
-        word = Word(wordsGenerator.generateRandomWord())
-        _displayingWord.value = word.toString()
-        _clickedCharacters.value = emptySet()
-        _lives.value = 5
-        _gameStatus.value = GameStatus.PLAYING
-    }
-
-    private fun trackLives(lives: Int) {
-        _gameStatus.value = if (lives == 0) GameStatus.LOST else GameStatus.PLAYING
-    }
-
-    private fun isPlayerWon() {
-        if (word.areAllLettersRevealed()) _gameStatus.value = GameStatus.WON
-    }
 
     fun characterClicked(letter: Char) {
-        if (_gameStatus.value != GameStatus.PLAYING) return
-        if (!word.revealLetter(letter)) _lives.value--
-        _displayingWord.value = word.toString()
-        _clickedCharacters.value = _clickedCharacters.value + letter
+        gameEngine.playerAction(letter)
     }
 
     fun restartButtonClicked() {
-        startGame()
+        gameEngine.startGame()
     }
 
 }
+

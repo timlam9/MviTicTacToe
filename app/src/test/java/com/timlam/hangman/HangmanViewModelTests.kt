@@ -29,7 +29,7 @@ class HangmanViewModelTests {
     fun before() {
         Dispatchers.setMain(testCoroutineDispatcher)
         every { wordsGenerator.generateRandomWord() } returns randomPlayingWord
-        viewModel = HangmanViewModel(wordsGenerator)
+        viewModel = HangmanViewModel(GameEngine(wordsGenerator))
     }
 
     @After
@@ -41,7 +41,7 @@ class HangmanViewModelTests {
     fun `when a game starts pick a random word and display it with underscores`() {
         val displayedWordSize = (randomPlayingWord.length * 2) - 1
 
-        assertEquals(displayedWordSize, viewModel.displayingWord.value.length)
+        assertEquals(displayedWordSize, viewModel.word.value.length)
     }
 
     @Test
@@ -51,14 +51,14 @@ class HangmanViewModelTests {
 
         viewModel.characterClicked(clickedChar)
 
-        assertEquals(semiRevealedWord.toString(), viewModel.displayingWord.value)
+        assertEquals(semiRevealedWord.toString(), viewModel.word.value)
     }
 
     @Test
     fun `clicking a character renders it pressed`() {
         viewModel.characterClicked('o')
 
-        assertEquals(setOf('o'), viewModel.clickedCharacters.value)
+        assertEquals(setOf('o'), viewModel.alreadySelectedCharacters.value)
     }
 
     @Test
