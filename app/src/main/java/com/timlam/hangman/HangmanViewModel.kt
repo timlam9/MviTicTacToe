@@ -19,6 +19,7 @@ class HangmanViewModel(private val wordsGenerator: WordsGenerator = WordsGenerat
     val displayingWord: StateFlow<String> = _displayingWord
 
     private val _lives = MutableStateFlow(5)
+    val lives: StateFlow<Int> = _lives
 
     private lateinit var word: Word
 

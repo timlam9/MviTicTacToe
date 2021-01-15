@@ -27,6 +27,8 @@ class HangmanFragment : Fragment(R.layout.fragment_hangman) {
         viewModel.displayingWord.onEach { binding.hangmanWord.text = it }.launchIn(viewLifecycleOwner.lifecycleScope)
         viewModel.clickedCharacters.onEach(::nullifyButtons).launchIn(viewLifecycleOwner.lifecycleScope)
         viewModel.gameStatus.onEach(::handleGameStatus).launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.lives.onEach { binding.hangmanLives.text = getString(R.string.lives, it.toString()) }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun nullifyButtons(set: Set<Char>) {
