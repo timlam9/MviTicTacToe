@@ -1,4 +1,4 @@
-package com.timlam.hangman
+package com.timlam.hangman.domain
 
 data class RevealingLetter(val letter: Char, var revealed: Boolean = false) {
 

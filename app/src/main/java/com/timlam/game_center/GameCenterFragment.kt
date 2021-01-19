@@ -3,7 +3,7 @@ package com.timlam.game_center
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.timlam.hangman.HangmanFragment
+import com.timlam.hangman.presentation.HangmanFragment
 import com.timlam.main.viewBinding
 import com.timlam.tictactoe.R
 import com.timlam.tictactoe.databinding.FragmentGameCenterBinding

@@ -1,4 +1,4 @@
-package com.timlam.hangman
+package com.timlam.hangman.presentation
 
 import android.os.Bundle
 import android.view.View
@@ -7,19 +7,20 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.timlam.hangman.domain.GameStatus
 import com.timlam.main.viewBinding
 import com.timlam.tictactoe.R
 import com.timlam.tictactoe.databinding.FragmentHangmanBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HangmanFragment : Fragment(R.layout.fragment_hangman) {
 
     private val binding by viewBinding(FragmentHangmanBinding::bind)
-    private val viewModel by viewModels<HangmanViewModel>()
+    private val viewModel: HangmanViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

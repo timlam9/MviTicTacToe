@@ -1,6 +1,12 @@
 package com.timlam.hangman
 
-import io.mockk.every
+import com.timlam.hangman.data.GameDispatchers
+import com.timlam.hangman.data.LocalWordGenerator
+import com.timlam.hangman.domain.GameEngine
+import com.timlam.hangman.domain.GameStatus
+import com.timlam.hangman.domain.Word
+import com.timlam.hangman.presentation.HangmanViewModel
+import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,19 +23,21 @@ class HangmanViewModelTests {
 
     // Responsibilities
     // WordsGenerator : Generate random words
-    private val wordsGenerator = mockk<WordsGenerator>()
+    private val wordsGenerator = mockk<LocalWordGenerator>()
 
     // ViewModel: Adapter between view and business logic
     private lateinit var viewModel: HangmanViewModel
-    private val randomPlayingWord = "titanomegistos"
 
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
+    private val gameDispatchers = GameDispatchers(testCoroutineDispatcher)
+
+    private val randomPlayingWord = "titanomegistos"
 
     @Before
     fun before() {
         Dispatchers.setMain(testCoroutineDispatcher)
-        every { wordsGenerator.generateRandomWord() } returns randomPlayingWord
-        viewModel = HangmanViewModel(GameEngine(wordsGenerator))
+        coEvery { wordsGenerator.generateRandomWord() } returns randomPlayingWord
+        viewModel = HangmanViewModel(gameDispatchers, GameEngine(wordsGenerator))
     }
 
     @After

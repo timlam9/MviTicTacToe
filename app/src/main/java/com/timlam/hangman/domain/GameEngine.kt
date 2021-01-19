@@ -1,9 +1,15 @@
-package com.timlam.hangman
+package com.timlam.hangman.domain
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.withContext
 
-class GameEngine(private val wordsGenerator: WordsGenerator) {
+class GameEngine(
+    private val wordsGenerator: WordGenerator<String>
+) {
 
     private val _displayingWord = MutableStateFlow("")
     val displayingWord: StateFlow<String> = _displayingWord
@@ -17,9 +23,9 @@ class GameEngine(private val wordsGenerator: WordsGenerator) {
     private val _lives = MutableStateFlow(5)
     val lives: StateFlow<Int> = _lives
 
-    private lateinit var word: Word
+    private var word: Word = Word("test")
 
-    fun startGame() {
+    suspend fun startGame() {
         word = Word(wordsGenerator.generateRandomWord())
         _displayingWord.value = word.toString()
         _clickedCharacters.value = emptySet()
@@ -40,6 +46,12 @@ class GameEngine(private val wordsGenerator: WordsGenerator) {
 
     fun hasPlayerWon() {
         if (word.areAllLettersRevealed()) _gameStatus.value = GameStatus.WON
+    }
+
+    suspend fun getList() = withContext(Dispatchers.IO) {
+        wordsGenerator.getList().onEach { words ->
+            words.shuffled().first()
+        }.launchIn(this)
     }
 
 }

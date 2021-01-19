@@ -1,4 +1,4 @@
-package com.timlam.hangman
+package com.timlam.hangman.domain
 
 class Word(value: String) {
 
