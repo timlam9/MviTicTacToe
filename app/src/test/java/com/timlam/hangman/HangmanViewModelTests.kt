@@ -2,6 +2,7 @@ package com.timlam.hangman
 
 import com.timlam.hangman.data.GameDispatchers
 import com.timlam.hangman.data.LocalWordGenerator
+import com.timlam.hangman.data.State
 import com.timlam.hangman.domain.GameEngine
 import com.timlam.hangman.domain.GameStatus
 import com.timlam.hangman.domain.Word
@@ -36,7 +37,7 @@ class HangmanViewModelTests {
     @Before
     fun before() {
         Dispatchers.setMain(testCoroutineDispatcher)
-        coEvery { wordsGenerator.generateRandomWord() } returns randomPlayingWord
+        coEvery { wordsGenerator.generateRandomWord() } returns State.success(randomPlayingWord)
         viewModel = HangmanViewModel(gameDispatchers, GameEngine(wordsGenerator))
     }
 

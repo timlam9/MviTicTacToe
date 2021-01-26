@@ -30,6 +30,12 @@ class HangmanFragment : Fragment(R.layout.fragment_hangman) {
         viewModel.gameStatus.onEach(::handleGameStatus).launchIn(viewLifecycleOwner.lifecycleScope)
         viewModel.lives.onEach { binding.hangmanLives.text = getString(R.string.lives, it.toString()) }
             .launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.displayLoadingView.onEach(::showLoadingView).launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun showLoadingView(show: Boolean) {
+        binding.hangmanLoadingView.isVisible = show
+        binding.hangmanWord.isVisible = !show
     }
 
     private fun nullifyButtons(set: Set<Char>) {

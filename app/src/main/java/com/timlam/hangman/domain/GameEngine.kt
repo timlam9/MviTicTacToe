@@ -1,5 +1,6 @@
 package com.timlam.hangman.domain
 
+import com.timlam.hangman.data.State
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -8,7 +9,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext
 
 class GameEngine(
-    private val wordsGenerator: WordGenerator<String>
+    private val wordsGenerator: WordGenerator
 ) {
 
     private val _displayingWord = MutableStateFlow("")
@@ -23,14 +24,25 @@ class GameEngine(
     private val _lives = MutableStateFlow(5)
     val lives: StateFlow<Int> = _lives
 
+    private val _displayLoadingView = MutableStateFlow(true)
+    val displayLoadingView = _displayLoadingView
+
     private var word: Word = Word("test")
 
     suspend fun startGame() {
-        word = Word(wordsGenerator.generateRandomWord())
-        _displayingWord.value = word.toString()
-        _clickedCharacters.value = emptySet()
-        _lives.value = 5
-        _gameStatus.value = GameStatus.PLAYING
+        _displayLoadingView.value = true
+        when (val state = wordsGenerator.generateRandomWord()) {
+            is State.Loading -> _displayLoadingView.value = true
+            is State.Success -> {
+                _displayLoadingView.value = false
+                word = Word(state.data)
+                _displayingWord.value = word.toString()
+                _clickedCharacters.value = emptySet()
+                _lives.value = 5
+                _gameStatus.value = GameStatus.PLAYING
+            }
+            is State.Failed -> _displayLoadingView.value = false
+        }
     }
 
     fun playerAction(letter: Char) {
@@ -49,8 +61,15 @@ class GameEngine(
     }
 
     suspend fun getList() = withContext(Dispatchers.IO) {
-        wordsGenerator.getList().onEach { words ->
-            words.shuffled().first()
+        wordsGenerator.getList().onEach { state ->
+            when (state) {
+                is State.Loading -> _displayLoadingView.value = true
+                is State.Success -> {
+                    _displayLoadingView.value = false
+                    state.data.shuffled().first()
+                }
+                is State.Failed -> _displayLoadingView.value = false
+            }
         }.launchIn(this)
     }
 

@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/hangmanLoadingView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        style="?android:attr/progressBarStyleLarge"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hangmanLives" />
+
     <TextView
         android:id="@+id/hangmanLives"
         android:layout_width="wrap_content"

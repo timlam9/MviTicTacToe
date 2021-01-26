@@ -16,7 +16,7 @@ private val presentation = module {
 }
 
 private val domain = module {
-    factory<WordGenerator<String>> { RemoteWordGenerator(get()) }
+    factory<WordGenerator> { RemoteWordGenerator(get()) }
     factory { GameEngine(get()) }
 }
 
